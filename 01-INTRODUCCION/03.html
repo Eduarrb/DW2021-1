@@ -8,6 +8,9 @@
     <title>Cervezas San Juan</title>
     <style>
         /* CSS CASCADE STYLE SHEET */
+        body{
+            margin: 0;
+        }
         header{
             text-align: center;
             /* 
@@ -15,21 +18,61 @@
             */
             /* border: 5px solid red; */
             /* border: 5px solid rgb(0,104,55); */
-            border: 5px solid #51f4a3;
+            border: 2px solid #006837;
+            /* height: 60px; */
+            /* margin: 0 0 5px 0; */
+            /* margin: 10px 0; */
+            /* margin: 10px; */
+            margin-bottom: 5px;
+            padding: 20px 0;
         }
+        section{
+            /* text-align: center; */
+            border: 2px solid #0071bc;
+            padding-bottom: 10px;
+        }
+        /* section article{
+            border: 2px solid #d4145a;
+        }
+        section aside{
+            border: 2px solid #d4145a;
+        } */
+        section div{
+            text-align: center;
+        }
+        section article,
+        section aside{
+            border: 2px solid #d4145a;
+            height: 100px;
+            width: 594px;
+            /* width: calc(100 / 3); */
+            display: inline-block;
+            text-align: center;
+        }
+        footer{
+            border: 2px solid #006837;
+            text-align: center;
+            padding: 20px 0;
+            /* padding: 20px 0 20px 0; */
+            /* padding: 20px; */
+            margin-top: 10px;
+            color: #3498db;
+        }
+
     </style>
 </head>
 <!-- BODY ETIQUETA PADRE / ROOT -->
-<body> 
+<body>
     <header>
         ENCABEZADO
     </header>
     <section>
-        SECCIÓN
+        <div>
+            SECCIÓN            
+        </div>
         <article>
             ARTICULO
-        </article>
-        <aside>
+        </article><aside>
             LADO
         </aside>
     </section>
