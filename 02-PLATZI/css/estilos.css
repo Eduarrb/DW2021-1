@@ -1,7 +1,64 @@
-div{
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
     font-family: 'Lato', sans-serif;
 }
 
-p{
-    font-family: sans-serif;
+/* NAV */
+nav{
+    background-color: #273b47;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
 }
+
+nav img{
+    display: block;
+    width: 100px;
+}
+
+nav div{
+    display: flex;
+    align-items: center;
+}
+
+nav div ul{
+    list-style: none;
+    display: flex;
+}
+
+/* nav div ul li{
+    border-right: 1px solid white;
+} */
+
+nav div ul li:not(:last-child){
+    border-right: 1px solid white;
+}
+
+
+nav div ul li a{
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5px 15px;
+}
+
+.login{
+    color: white;
+    text-decoration: none;
+    background-color: #ff4842;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: inline-block;
+}
+/* 
+nav div a{
+    background-color: peru;
+}
+nav div a{
+    background-color: green;
+} */
+
