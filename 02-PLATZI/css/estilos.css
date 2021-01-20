@@ -62,3 +62,57 @@ nav div a{
     background-color: green;
 } */
 
+/* HEADER */
+header{
+    background-color: #efefef;
+    padding-bottom: 50px;
+}
+
+header section{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    /* width: 1780px; */
+}
+
+header section form{
+    /* margin-top: 20px; */
+    padding: 10px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+header section form input{
+    margin-right: 10px;
+}
+header section form button{
+    background-color: black;
+    color: #ffffff;
+    border: none;
+    width: 19px;
+    height: 19px;
+    border-radius: 3px;
+}
+header section article{
+    position: relative;
+}
+header section article img{
+    display: block;
+    width: 100%;
+}
+header section article aside{
+    position: absolute;
+    background-color: rgba(255,255,255,.7);
+    bottom: 20px;
+    left: 20px;
+    padding: 20px;
+}
+header section article aside hr{
+    margin: 10px 0;
+}
+/* header section article aside div{
+    display: flex;
+} */
+.portadaData{
+    display: flex;
+    justify-content: space-between;
+}
