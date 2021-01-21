@@ -65,7 +65,7 @@ nav div a{
 /* HEADER */
 header{
     background-color: #efefef;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
 }
 
 header section{
@@ -115,4 +115,68 @@ header section article aside hr{
 .portadaData{
     display: flex;
     justify-content: space-between;
+}
+
+/* SECCIÓN PUBLICACIONES */
+#publicaciones{
+    padding: 40px 0;
+}
+.contenedor{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+#publicaciones div article{
+    width: calc(100% / 3 - 20px);
+    /* width: calc(140px / 3) */
+    margin-bottom: 30px;
+}
+
+#publicaciones div article img{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#publicaciones div article div{
+    display: flex;
+    justify-content: space-between;
+}
+#publicaciones div article hr{
+    margin: 10px 0;
+}
+
+/* FOOTER */
+footer{
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+    align-items: center;
+}
+footer span{
+    color: #939393;
+    margin-right: 15px;
+    /* padding: 5px;
+    border: 1px solid transparent; */
+}
+footer a{
+    text-decoration: none;
+    background-color: #eaeaea;
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 5px 8px;
+    /* margin-right: 10px; */
+}
+
+footer a.active{
+    background-color: transparent;
+    border: none;
+}
+
+footer a:not(:last-child){
+    margin-right: 10px;
 }
