@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+font-family: 'Merriweather', serif;
+font-family: 'Merriweather Sans', sans-serif; */
+
+/* CLASES CONSTANTES */
+.contenedor{
+    width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* NAV */
+.nav{
+    font-family: 'Merriweather Sans', sans-serif;
+    /* background-color: rgba(0,0,0,.5); */
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+}
+.nav__contenedor{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav__contenedor--logo{
+    color: rgba(255,255,255,.7);
+    font-size: 20px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.nav__contenedor--logo:hover{
+    color: #fff;
+}
+
+.nav__contenedor__menu{
+    list-style: none;
+    display: flex;
+}
+.nav__contenedor__menu li a{
+    color: rgba(255,255,255,.7);
+    text-decoration: none;
+    padding: 15px 20px;
+    display: inline-block;
+    transition: all .5s;
+}
+.nav__contenedor__menu li a:hover{
+    color: white;
+    transition: all .5s;
+}
+
+/* HEADER */
+.header{
+    background-image: 
+        linear-gradient(
+            rgba(92,77,66,.8),
+            rgba(92,77,66,.8)
+        ),
+        url(../img/bg-masthead.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
