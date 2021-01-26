@@ -179,3 +179,103 @@ font-family: 'Merriweather Sans', sans-serif; */
     color: rgba(255,255,255,.5);
 }
 
+/* SERVICIOS */
+.servicios{
+    padding: 100px 0;
+}
+.servicios__contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.servicios__contenedor h2{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+}
+.servicios__contenedor__box{
+    width: 100%;
+    display: flex;
+    /* padding: 0 30px; */
+    justify-content: space-between;
+    /* margin-top: 30px; */
+}
+.servicios__contenedor__box article{
+    text-align: center;
+    width: calc(25% - 90px / 4);
+}
+.servicios__contenedor__box article svg{
+    color: #f4623a;
+    font-size: 64px;
+}
+.servicios__contenedor__box article h3{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 24px;
+    color: #212529;
+    font-weight: 500;
+}
+.servicios__contenedor__box article p{
+    font-family: 'Merriweather', serif;
+    line-height: 24px;
+    font-weight: 300;
+    color: #6c757d;
+}
+
+/* PORTAFOLIO */
+.portafolio{
+    display: flex;
+    flex-wrap: wrap;
+}
+.portafolio__item{
+    width: calc(100% / 3);
+    position: relative;
+}
+
+
+
+.portafolio__item img{
+    display: block;
+    width: 100%;
+}
+.portafolio__item div{
+    /* background-color: #f4623a; */
+    background-color: rgba(244,98,58,.8);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+.portafolio__item:hover .portafolio__item__data{
+    /* display: flex; */
+    opacity: 1;
+    visibility: visible;
+    transition: all .3s;
+}
+
+/* .portafolio__item img:hover .portafolio__item div{
+    display: flex;
+} */
+.categoria{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 14px;
+    color: rgba(255,255,255,.6);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.nombreProyecto{
+    font-family: 'Merriweather', serif;
+    font-size: 19px;
+    color: white;
+    margin-top: 5px;
+}
