@@ -279,3 +279,65 @@ font-family: 'Merriweather Sans', sans-serif; */
     color: white;
     margin-top: 5px;
 }
+
+/* DESCARGA */
+.descarga{
+    background-color: #343a40;
+    padding: 100px 0;
+    text-align: center;
+}
+.descarga h2{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    color: white;
+}
+
+/* CONTACTO */
+.contacto{
+    padding: 100px 0;
+}
+.contacto__contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.contacto__contenedor h2{
+    font-family: 'Merriweather Sans', sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+}
+.contacto__contenedor p{
+    font-family: 'Merriweather', serif;
+    /* font-size: 16px; */
+    text-align: center;
+    width: 60%;
+    line-height: 24px;
+    font-weight: 300;
+    color: #6c757d;
+}
+.contacto__contenedor__box{
+    display: flex;
+    width: 60%;
+    justify-content: space-evenly;
+}
+.contacto__contenedor__box article{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.contacto__contenedor__box article svg{
+    color: #6c757d;
+    font-size: 40px;
+}
+.contacto__contenedor__box article span{
+    font-family: 'Merriweather', serif;
+    color: #212529;
+}
+.contacto__contenedor__box article a{
+    font-family: 'Merriweather', serif;
+    text-decoration: none;
+    color: #f4623a;
+}
