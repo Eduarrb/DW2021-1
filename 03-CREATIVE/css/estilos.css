@@ -83,7 +83,25 @@ font-family: 'Merriweather Sans', sans-serif; */
     padding: 10px 0;
     position: fixed;
     width: 100%;
+    z-index: 1;
 }
+.nav.active{
+    background-color: white;
+    box-shadow: 0 0 15px rgba(0,0,0,.4);
+}
+.nav.active .nav__contenedor--logo,
+.nav.active .nav__contenedor__menu li a{
+    color: black;
+}
+.nav.active .nav__contenedor--logo:hover,
+.nav.active .nav__contenedor__menu li a:hover{
+    color: #f4623a;
+}
+/* .nav.active .nav__contenedor__menu li a{
+    color: black;
+} */
+
+
 .nav__contenedor{
     display: flex;
     justify-content: space-between;
@@ -115,6 +133,9 @@ font-family: 'Merriweather Sans', sans-serif; */
     color: white;
     transition: all .5s;
 }
+.iconMenu{
+    display: none;
+}
 
 /* HEADER */
 .header{
@@ -128,6 +149,7 @@ font-family: 'Merriweather Sans', sans-serif; */
     background-size: cover;
     height: 100vh;
 }
+
 .header__contenedor{
     display: flex;
     flex-direction: column;
@@ -242,6 +264,7 @@ font-family: 'Merriweather Sans', sans-serif; */
     /* background-color: #f4623a; */
     background-color: rgba(244,98,58,.8);
     position: absolute;
+    /* z-index: 1; */
     top: 0;
     left: 0;
     width: 100%;
@@ -307,6 +330,7 @@ font-family: 'Merriweather Sans', sans-serif; */
     font-family: 'Merriweather Sans', sans-serif;
     font-size: 28px;
     font-weight: 500;
+    text-align: center;
 }
 .contacto__contenedor p{
     font-family: 'Merriweather', serif;
@@ -341,3 +365,71 @@ font-family: 'Merriweather Sans', sans-serif; */
     text-decoration: none;
     color: #f4623a;
 }
+
+/* MEDIA QUERIES / BREAKPOINTS */
+/* DESKTOP FIRST */
+
+@media only screen and (max-width: 992px){
+    /* CONSTANTES */
+    .contenedor{
+        width: 80%;
+    }
+    /* NAV */
+    .nav{
+        background-color: white;
+        padding: 20px 0;
+    }
+    .nav__contenedor--logo{
+        color: black;
+    }
+    .nav__contenedor__menu{
+        display: none;
+    }
+    .iconMenu{
+        display: block;
+        border: 1px solid rgba(0,0,0,.2);
+        font-size: 22px;
+        padding: 5px 15px;
+        color: rgba(0,0,0,.5);
+        border-radius: 3px;
+    }
+    /* SERVICIOS */
+    .servicios__contenedor__box{
+        flex-wrap: wrap;
+    }
+    .servicios__contenedor__box article{
+        width: calc(50% - 15px);
+        margin-bottom: 30px;
+    }
+
+    /* PORTAFOLIO */
+    .portafolio__item{
+        width: 50%;
+    }
+
+    /* CONTACTO */
+    .contacto__contenedor__box{
+        flex-wrap: wrap;
+    }
+    .contacto__contenedor__box article{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .header__contenedor h1{
+        font-size: 36px;
+    }
+    .servicios__contenedor__box article{
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 576px){
+    /* PORTAFOLIO */
+    .portafolio__item{
+        width: 100%;
+    }
+}
+
