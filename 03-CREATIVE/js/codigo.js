@@ -5,6 +5,17 @@
 // DOM -> DOCUMENT OBJECT MODEL
 
 var nav = document.querySelector('.nav');
+var btnMenu = document.querySelector('.iconMenu');
+var menu = document.querySelector('.nav__contenedor__menu');
+
+btnMenu.addEventListener('click', mostrarMenu);
+
+function mostrarMenu(){
+    // console.log('hiciste click');
+    // menu.classList.add('menuActive');
+    // menu.classList.remove('menuActive');
+    menu.classList.toggle('menuActive');
+}
 
 window.addEventListener('scroll', movimientoScroll);
 

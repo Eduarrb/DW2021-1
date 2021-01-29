@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;500;700&family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
     <!-- <script src="https://kit.fontawesome.com/76a3e7287b.js" crossorigin="anonymous"></script> -->
@@ -17,16 +18,17 @@
             <ul class="nav__contenedor__menu">
                 <!-- li*4>a -->
                 <li>
-                    <a href="#">Acerca De</a>
+                    <a href="#bienvenida">Acerca De</a>
                 </li>
                 <li>
-                    <a href="#">Servicios</a>
+                    <a href="#servicios">Servicios</a>
                 </li>
                 <li>
-                    <a href="#">Portafolio</a>
+                    <a href="#portafolio">Portafolio</a>
+                    <!-- <a href="portafolio.html" target="_blank">Portafolio</a> -->
                 </li>
                 <li>
-                    <a href="#">Contacto</a>
+                    <a href="#contacto">Contacto</a>
                 </li>
             </ul>
             <div class="iconMenu">
@@ -46,7 +48,7 @@
             <a href="#" class="btn btn-naranja mt-4">encuentra más</a>
         </div>
     </header>
-    <section class="bienvenida">
+    <section class="bienvenida" id="bienvenida">
         <div class="bienvenida__contenedor contenedor">
             <h2>Tenemos lo que necesitas</h2>
             <div class="separador separador-blanco mt-2 mb-2"></div>
@@ -56,7 +58,7 @@
             <a href="#" class="btn btn-blanco mt-4">empieza ya!</a>
         </div>
     </section>
-    <section class="servicios">
+    <section class="servicios" id="servicios">
         <div class="servicios__contenedor contenedor">
             <h2>A Tu Servicio</h2>
             <div class="separador separador-naranja mt-2 mb-2"></div>
@@ -84,7 +86,7 @@
             </div>
         </div>
     </section>
-    <section class="portafolio">
+    <section class="portafolio" id="portafolio">
         <div class="portafolio__item">
             <img src="img/1.jpg" alt="">
             <div class="portafolio__item__data">
@@ -132,7 +134,7 @@
         <h2>Descarga gratis al inicar Bootstrap</h2>
         <a href="#" class="btn btn-blanco mt-3">descarga ahora!</a>
     </section>
-    <section class="contacto">
+    <section class="contacto" id="contacto">
         <div class="contacto__contenedor contenedor">
             <h2>Permanescamos en Contacto!</h2>
             <div class="separador separador-naranja mt-2 mb-2"></div>
