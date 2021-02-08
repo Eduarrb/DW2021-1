@@ -1,0 +1,30 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-size: 62.5%; }
+
+a,
+a:link,
+a:visited {
+  text-decoration: none; }
+
+ul {
+  list-style: none; }
+
+.contenedor {
+  max-width: 120rem;
+  margin-left: auto;
+  margin-right: auto; }
+
+.header__nav {
+  background-color: #212529; }
+  .header__nav__contenedor--logo {
+    font-family: "Kaushan Script", cursive;
+    font-size: 2.8rem;
+    color: #fec503; }
+
+/*# sourceMappingURL=estilos.css.map */

@@ -1,0 +1,13 @@
+.header{
+    &__nav{
+        background-color: #212529;
+        &__contenedor{
+            &--logo{
+                font-family: $font-kaushan;
+                font-size: 2.8rem;
+                color: #fec503;
+                // font-family: $fon;
+            }
+        }
+    }
+}

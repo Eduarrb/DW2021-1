@@ -2,8 +2,12 @@ var btn = document.querySelector('button');
 
 var ul = document.querySelector('ul');
 
+var tareaInput = document.querySelector('.tarea');
+
 // ⚡⚡ 1 agregar tareas estaticas
 btn.addEventListener('click', () => {
+    console.log(tareaInput.value);
+
     var li = "<li>Nueva Tarea</li>";
     ul.insertAdjacentHTML('beforeend', li);
 });
