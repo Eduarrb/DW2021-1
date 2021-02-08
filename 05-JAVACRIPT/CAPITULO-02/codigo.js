@@ -4,12 +4,22 @@ var ul = document.querySelector('ul');
 
 var tareaInput = document.querySelector('.tarea');
 
+var alerta = document.querySelector('.alerta');
+
 // ⚡⚡ 1 agregar tareas estaticas
 btn.addEventListener('click', () => {
-    console.log(tareaInput.value);
-
-    var li = "<li>Nueva Tarea</li>";
-    ul.insertAdjacentHTML('beforeend', li);
+    // console.log(tareaInput.value);
+    // 🔥🔥 VALIDANDO INPUT
+    if(tareaInput.value == ''){
+        alerta.innerHTML = 'Debes ingresar una tarea';
+    }
+    else{
+        // var li = "<li>Nueva Tarea</li>";
+        alerta.innerHTML = '';
+        var li = `<li>${tareaInput.value}</li>`;
+        ul.insertAdjacentHTML('beforeend', li);
+        tareaInput.value = '';
+    }
 });
 
 // nodelist => es un tipo de objeto
