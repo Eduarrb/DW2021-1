@@ -192,3 +192,136 @@ INSERT INTO peliculas (peli_nombre, peli_genero, peli_estreno, peli_restriccione
     ('El sexto sentido', 'Suspenso', '1990-10-10', 'PG-14')
 
 -- cantidad de peliculas que sean PG 
+
+SELECT 
+    COUNT(*) AS CANTIDAD, peli_restricciones
+    FROM peliculas 
+    WHERE peli_restricciones = 'PG-14' 
+    GROUP BY peli_restricciones
+
+INSERT INTO peliculas (peli_nombre, peli_genero, peli_estreno, peli_restricciones) VALUES
+    ('El Naufrago', 'Drama', '2000-01-25', 'PG_16')
+
+-- MOSTRAR PELICULAS QUE EMPIECEN SU NOMBRE CON LA LETRA E
+-- COMODINES %
+
+SELECT * FROM peliculas WHERE peli_nombre LIKE "E%"
+
+SELECT * FROM peliculas WHERE peli_nombre LIKE "%E"
+
+SELECT * FROM peliculas WHERE peli_nombre NOT LIKE "%in%"
+
+-- BETWEEN
+-- MOSTRAR PELICULAS ENTRE 1997 Y 2015
+
+SELECT * FROM peliculas WHERE peli_estreno BETWEEN "1997-01-01" AND "2015-12-31"
+
+-- MOSTRAR PELICULAS ENTRE 2004 Y 2018
+SELECT * FROM peliculas WHERE peli_estreno BETWEEN "2004-01-01" AND "2018-12-31"
+
+-- MOSTRAR PELICULAS ENTRE 1997 - 2015 Y QUE EMPIECEN CON LA LETRA E
+SELECT * 
+    FROM peliculas 
+    WHERE peli_estreno BETWEEN "1997-01-01" AND "2015-12-31" AND peli_nombre LIKE "e%"
+
+-----------------------------------------------------------
+
+CREATE TABLE personajes(
+    per_act_id INT NOT NULL,
+    per_peli_id INT NOT NULL,
+    per_nombre VARCHAR(50)
+)
+
+INSERT INTO personajes (per_act_id, per_peli_id, per_nombre) VALUES
+    (1, 1, "Deadpool"),
+    (2, 1, "Cable")
+
+INSERT INTO actores (act_nombre, act_apellido) VALUES
+    ("Mark", "Hamil"),
+    ("Harrison", "Ford"),
+    ("Carrie", "Fisher"),
+    ("Matthew", "McConaughey"),
+    ("Anne", "Hathaway"),
+    ("Michael", "J. Fox"),
+    ("Cristopher", "Loyd"),
+    ("Bruce", "Willis"),
+    ("Tom", "Hanks")
+
+INSERT INTO personajes (per_act_id, per_peli_id, per_nombre) VALUES
+    (3, 2, "Luke Skywalker"),
+    (4, 2, "Han Solo"),
+    (5, 2, "Leia Organa"),
+    (6, 3, "Joseph Cooper"),
+    (7, 3, "Amalia Brand"),
+    (8, 6, "Marty McFly"),
+    (9, 6, "Dr. Brown"),
+    (10, 8, "Dr Malcom"),
+    (11, 9, "El naufrago")
+
+-- DATOS PELICULAS Y PERSONAJES
+
+SELECT *
+    FROM peliculas, personajes
+    WHERE peliculas.peli_id = personajes.per_peli_id
+
+SELECT *
+    FROM actores, personajes
+    WHERE actores.act_id = personajes.per_act_id
+
+SELECT *
+    FROM peliculas, personajes, actores
+    WHERE peliculas.peli_id = personajes.per_peli_id AND actores.act_id = personajes.per_act_id
+
+CREATE TABLE directores(
+    dire_id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    dire_nombre VARCHAR(25) NOT NULL,
+    dire_apellido VARCHAR(25) NOT NULL
+)
+
+-- direA  matrix
+-- direA  mulan
+-- direA  Batman
+
+INSERT INTO directores (dire_nombre, dire_apellido) VALUES
+    ("Tim", "Miller"),
+    ("Cristopher", "Nolan"),
+    ("William", "Broyles"),
+    ("Robert", "Zemeckis")
+
+ALTER TABLE peliculas ADD COLUMN peli_dire_id INT
+
+UPDATE peliculas SET peli_dire_id = 1 WHERE peli_id = 1
+UPDATE peliculas SET peli_dire_id = 2 WHERE peli_id = 3
+UPDATE peliculas SET peli_dire_id = 3 WHERE peli_id = 9
+UPDATE peliculas SET peli_dire_id = 4 WHERE peli_id = 6
+
+SELECT * 
+    FROM peliculas, directores
+    WHERE peliculas.peli_dire_id = directores.dire_id
+
+SELECT *
+    FROM directores, peliculas
+    WHERE directores.dire_id = peliculas.peli_dire_id
+
+SELECT *
+    FROM actores, peliculas, personajes, directores
+    WHERE actores.act_id = personajes.per_act_id 
+        AND peliculas.peli_id = personajes.per_peli_id
+        AND peliculas.peli_dire_id = directores.dire_id
+
+-- NOMBRE DE LA PELICULA Y LOS DIRECTORES
+
+SELECT peli_nombre, dire_nombre
+    FROM directores, peliculas
+    WHERE directores.dire_id = peliculas.peli_dire_id
+    
+select peliculas.peli_nombre, directores.dire_nombre 
+    from peliculas, directores 
+    where directores.dire_id = peliculas.peli_dire_id
+
+--- ALIAS PARA LAS TABLAS
+
+SELECT p.peli_nombre, d.dire_nombre
+    FROM peliculas p, directores d
+    WHERE p.peli_dire_id = d.dire_id
+
