@@ -325,3 +325,32 @@ SELECT p.peli_nombre, d.dire_nombre
     FROM peliculas p, directores d
     WHERE p.peli_dire_id = d.dire_id
 
+-- NOMBRE LA PELICULA, DIRECTOR(UN SOLO CAMPO), LOS ACTORES(UN SOLO CAMPO), SUS PERSONAJES
+
+-- MATRIX | ROBERT SEMEKICS | KEAUNU RIVES | NEO
+
+SELECT 
+    b.peli_nombre,
+    CONCAT(d.dire_nombre, " ", d.dire_apellido) AS director,
+    CONCAT(a.act_nombre, " ", a.act_apellido) AS actor,
+    c.per_nombre
+    FROM actores a, peliculas b, personajes c, directores d
+    WHERE a.act_id = c.per_act_id 
+        AND b.peli_id = c.per_peli_id
+        AND b.peli_dire_id = d.dire_id
+
+-- NOMBRE LA PELICULA, DIRECTOR(UN SOLO CAMPO), LOS ACTORES(UN SOLO CAMPO), SUS PERSONAJES,
+-- NOMBRE DE LAS PELICULAS DEBEN ESTAR EN ORDEN DESCENDENTE
+
+SELECT 
+    b.peli_nombre,
+    CONCAT(d.dire_nombre, " ", d.dire_apellido) AS director,
+    CONCAT(a.act_nombre, " ", a.act_apellido) AS actor,
+    c.per_nombre
+    FROM actores a, peliculas b, personajes c, directores d
+    WHERE a.act_id = c.per_act_id 
+        AND b.peli_id = c.per_peli_id
+        AND b.peli_dire_id = d.dire_id
+    ORDER BY b.peli_nombre DESC
+
+-- INNER JOIN, LEFT JOIN, RIGHT JOIN
