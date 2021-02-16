@@ -108,15 +108,20 @@ SELECT *
     FROM peliculas, personajes, actores
     WHERE peliculas.peli_id = personajes.per_peli_id AND actores.act_id = personajes.per_act_id
 
-SELECT *
-    FROM peliculas a
-    INNER JOIN personajes b ON a.peli_id = b.per_peli_id
-    INNER JOIN actores c ON b.per_act_id = c.act_id
+INSERT INTO peliculas (peli_nombre, peli_genero, peli_estreno, peli_restricciones) VALUES
+    ("007", "Acción", "1970-01-01", "PG-16")
+
+UPDATE personajes SET per_act_id = 0 WHERE per_nombre = "El naufrago"
 
 SELECT *
     FROM peliculas a
-    LEFT JOIN directores b ON a.peli_dire_id = b.dire_id
-    LEFT JOIN personajes c ON a.peli_id = c.per_peli_id
+    LEFT JOIN personajes b ON a.peli_id = b.per_peli_id -- TABLA A
+    RIGHT JOIN actores c ON b.per_act_id = c.act_id     -- TABLA B
+
+SELECT *
+    FROM peliculas a
+    LEFT JOIN directores b ON a.peli_dire_id = b.dire_id 
+    LEFT JOIN personajes c ON a.peli_id = c.per_peli_id  -- TABLA B
 
 SELECT *
     FROM peliculas a
@@ -137,3 +142,11 @@ SELECT *
     FROM actores a
     INNER JOIN personajes b ON a.act_id = b.per_act_id
     RIGHT JOIN peliculas c ON c.peli_id = b.per_peli_id
+
+SELECT *
+    FROM peliculas a
+    LEFT JOIN directores b ON a.peli_dire_id = b.dire_id 
+    INNER JOIN personajes c ON a.peli_id = c.per_peli_id  
+    RIGHT JOIN actores d ON d.act_id = c.per_act_id
+
+

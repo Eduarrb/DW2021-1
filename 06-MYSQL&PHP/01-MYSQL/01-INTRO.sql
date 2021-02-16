@@ -66,7 +66,8 @@ CREATE TABLE peliculas(
     peli_nombre VARCHAR(255) NOT NULL,
     peli_genero VARCHAR(255) NOT NULL,
     peli_estreno DATE NOT NULL,
-    peli_restricciones VARCHAR(10)
+    peli_restricciones VARCHAR(10),
+    peli_dire_id INT(10),
 )
 
 INSERT INTO peliculas (peli_nombre, peli_genero, peli_estreno, peli_restricciones) VALUES
@@ -275,7 +276,8 @@ SELECT *
 CREATE TABLE directores(
     dire_id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
     dire_nombre VARCHAR(25) NOT NULL,
-    dire_apellido VARCHAR(25) NOT NULL
+    dire_apellido VARCHAR(25) NOT NULL,
+    
 )
 
 -- direA  matrix
@@ -290,10 +292,10 @@ INSERT INTO directores (dire_nombre, dire_apellido) VALUES
 
 ALTER TABLE peliculas ADD COLUMN peli_dire_id INT
 
-UPDATE peliculas SET peli_dire_id = 1 WHERE peli_id = 1
-UPDATE peliculas SET peli_dire_id = 2 WHERE peli_id = 3
-UPDATE peliculas SET peli_dire_id = 3 WHERE peli_id = 9
-UPDATE peliculas SET peli_dire_id = 4 WHERE peli_id = 6
+UPDATE peliculas SET peli_dire_id = 1 WHERE peli_id = 1;
+UPDATE peliculas SET peli_dire_id = 2 WHERE peli_id = 3;
+UPDATE peliculas SET peli_dire_id = 3 WHERE peli_id = 9;
+UPDATE peliculas SET peli_dire_id = 4 WHERE peli_id = 6;
 
 SELECT * 
     FROM peliculas, directores
