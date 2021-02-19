@@ -1,4 +1,5 @@
 <?php include "conexion.php"; ?>
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,10 +79,10 @@
                                             <td><?php echo $fila['user_nickname']; ?></td>
                                             <td><?php echo $fila['user_pass']; ?></td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-success">editar</a>
+                                                <a href="login.php?editar=<?php echo $fila['user_id']; ?>" class="btn btn-sm btn-success">editar</a>
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-sm btn-danger">borrar</a>
+                                                <a href="login.php?delete=<?php echo $fila['user_id']; ?>" class="btn btn-sm btn-danger">borrar</a>
                                             </td>
                                         </tr>       
                                 <?php }
@@ -114,9 +115,34 @@
                 </table>
             </div>
             <div class="col-md-4">
+                <?php
 
+                    if(isset($_GET['editar'])){
+                        // echo 'funciona';
+                        $id = $_GET['editar'];
+                        // echo $id;
+                        // echo $_GET['editar'];
+                        include "login_update.php";
+                    }
+                
+                ?>
             </div>
         </div>
     </div>
 </body>
 </html>
+<?php
+
+    if(isset($_GET['delete'])){
+        // echo 'funcionaaaaaaaaaaaaaaaaaa';
+        $id = $_GET['delete'];
+        // echo $id;
+        $query = "DELETE FROM usuarios WHERE user_id = {$id}";
+        $query_resultado = mysqli_query($conexion, $query);
+        if(!$query_resultado){
+            die("Fallo en la conexion " . mysqli_error($conexion));
+        }
+        header("Location: login.php");
+    }
+
+?>
