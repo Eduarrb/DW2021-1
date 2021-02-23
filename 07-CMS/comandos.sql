@@ -27,3 +27,6 @@ CREATE TABLE posts(
     post_vistas INT NOT NULL DEFAULT 0,
     post_status VARCHAR(30) NOT NULL
 )
+
+INSERT INTO posts (post_cat_id, post_titulo, post_autor, post_fecha, post_img, post_contenido, post_tags, post_status) VALUES
+    (1, 'Curso de PHP', 'Jaimito', '2021-01-01', '01.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, maxime sint eveniet quibusdam quod distinctio illo officiis reprehenderit fugiat dolore!', 'curso, php, 2021', 'publicado')
