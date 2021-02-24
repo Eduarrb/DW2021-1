@@ -16,11 +16,52 @@
     function f_fetch_array($resultado){
         return mysqli_fetch_array($resultado);
     }
-
+    // EVITAR SQL INJECTIONS
     function f_escape_string($string){
         global $conexion;
         return mysqli_real_escape_string($conexion, $string);
     }
+
+    function f_redirigir($location){
+        header("Location: $location");
+        // www.google.com
+    }
+
+    function f_crear_msj($msj){
+        if(!empty($msj)){
+            $_SESSION['mensaje'] = $msj;
+        }
+        else{
+            $msj = '';
+        }
+    }
+    function f_mostrar_msj(){
+        if(isset($_SESSION['mensaje'])){
+            echo $_SESSION['mensaje'];
+            unset($_SESSION['mensaje']);
+        }
+    }
+    function f_mostrar_msj_success($msj){
+        $msj = <<<DELIMITADOR
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Holy guacamole!</strong> {$msj}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+DELIMITADOR;
+        return $msj;
+    }
+    function f_mostrar_msj_danger($msj){
+        $msj = <<<DELIMITADOR
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Holy guacamole!</strong> {$msj}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+DELIMITADOR;
+        return $msj;
+    }
+
+
 
     // ⚡⚡ FRONT
     function f_show_posts_front(){
@@ -54,7 +95,38 @@ DELIMITADOR;
             $cat_nombre = f_escape_string(trim($_POST['cat_name']));
             $query = f_query("INSERT INTO categorias (cat_nombre) VALUES ('{$cat_nombre}')");
             f_confirmar($query);
-            header("Location: index.php?categorias");
+            // header("Location: index.php?categorias");
+            f_crear_msj(f_mostrar_msj_success("Categoria creada correctamente!"));
+            f_redirigir("index.php?categorias");
+        }
+    }
+    function f_show_categorias(){
+        $query = f_query("SELECT * FROM categorias");
+        f_confirmar($query);
+        while($fila = f_fetch_array($query)){
+            $categorias = <<<DELIMITADOR
+                <tr>
+                    <td>{$fila['cat_id']}</td>
+                    <td>{$fila['cat_nombre']}</td>
+                    <td>
+                        <a href="index.php?categorias&edit={$fila['cat_id']}" class="btn btn-primary">editar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">borrar</a>
+                    </td>
+                </tr>
+DELIMITADOR;
+            echo $categorias;
+        }
+    }
+    function f_categoria_edit($cat_id){
+        if(isset($_POST['editar'])){
+            // echo 'funciona';
+            $cat_nombre = f_escape_string(trim($_POST['cat_name_edit']));
+            $query = f_query("UPDATE categorias SET cat_nombre = '{$cat_nombre}' WHERE cat_id = {$cat_id}");
+            f_confirmar($query);
+            f_crear_msj(f_mostrar_msj_success("editada correctamente!"));
+            f_redirigir("index.php?categorias");
         }
     }
 ?>

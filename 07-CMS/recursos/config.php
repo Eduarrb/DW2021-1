@@ -1,6 +1,9 @@
 <?php
     ob_start();
 
+    session_start();
+    // $_SESSION['id'] = null
+
     // ⚡⚡ LECTURA EXTERNA DE PLANTILLAS
     defined("DS") ? NULL : define('DS', DIRECTORY_SEPARATOR);
     # ARCHIVOS . DS . CAPRTAMENOR . DS
