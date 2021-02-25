@@ -30,6 +30,8 @@
     function f_crear_msj($msj){
         if(!empty($msj)){
             $_SESSION['mensaje'] = $msj;
+            // $_SESSION['miconejito'] = $msj;
+            // $_SESSION['karlita'] = "hola";
         }
         else{
             $msj = '';
@@ -45,7 +47,8 @@
         $msj = <<<DELIMITADOR
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Holy guacamole!</strong> {$msj}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
                 </button>
             </div>
 DELIMITADOR;
@@ -55,7 +58,9 @@ DELIMITADOR;
         $msj = <<<DELIMITADOR
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Holy guacamole!</strong> {$msj}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
 DELIMITADOR;
         return $msj;
@@ -112,7 +117,7 @@ DELIMITADOR;
                         <a href="index.php?categorias&edit={$fila['cat_id']}" class="btn btn-primary">editar</a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-danger">borrar</a>
+                        <a href="index.php?categorias&delete={$fila['cat_id']}" class="btn btn-danger">borrar</a>
                     </td>
                 </tr>
 DELIMITADOR;

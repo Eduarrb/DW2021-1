@@ -22,7 +22,7 @@
                 <div class="container-fluid">
 
                     <?php
-                    
+                        // echo __DIR__;
                         // echo $_SERVER['REQUEST_URI'];
 
                         if($_SERVER['REQUEST_URI'] == '/dw2021-1/07-CMS/public/admin/' || $_SERVER['REQUEST_URI'] == '/dw2021-1/07-CMS/public/admin/index.php'){

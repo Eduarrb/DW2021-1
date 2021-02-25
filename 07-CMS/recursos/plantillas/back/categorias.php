@@ -29,6 +29,13 @@
                 // echo 'funcionaaaaaaaaaaaa';
                 include(TEMPLATE_BACK . DS . "categorias_edit.php");
             }
+            if(isset($_GET['delete'])){
+                $id_delete = f_escape_string(trim($_GET['delete']));
+                $query = f_query("DELETE FROM categorias WHERE cat_id = {$id_delete}");
+                f_confirmar($query);
+                f_crear_msj(f_mostrar_msj_success("Categoria eliminada correctamente!"));
+                f_redirigir("index.php?categorias");
+            }
         
         ?>
     </div>

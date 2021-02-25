@@ -9,6 +9,7 @@
     # ARCHIVOS . DS . CAPRTAMENOR . DS
     
     defined('TEMPLATE_FRONT') ? NULL : define('TEMPLATE_FRONT', __DIR__ . DS . "plantillas/front");
+    //                                      D:\xampp\htdocs\DW2021-1\07-CMS\recursos
     defined('TEMPLATE_BACK') ? NULL : define('TEMPLATE_BACK', __DIR__ . DS . "plantillas/back");
     // echo __DIR__;
 
