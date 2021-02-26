@@ -95,22 +95,43 @@ DELIMITADOR;
     }
 
     // ⚡⚡ BACK
+    function f_posts_add(){
+        if(isset($_POST['guardar'])){
+            // echo 'funciona';
+            $post_titulo = f_escape_string(trim($_POST['post_titulo']));
+            // echo $post_titulo;
+            $post_cat_id = f_escape_string(trim($_POST['post_cat_id']));
+            $post_autor = f_escape_string(trim($_POST['post_autor']));
+            $post_fecha = f_escape_string(trim($_POST['post_fecha']));
+            $post_img = f_escape_string(trim($_POST['post_img']));
+            $post_contenido = f_escape_string(trim($_POST['post_contenido']));
+            $post_tags = f_escape_string(trim($_POST['post_tags']));
+            $post_status = f_escape_string(trim($_POST['post_status']));
+
+            $query = f_query("INSERT INTO posts (post_titulo, post_cat_id, post_autor, post_fecha, post_img, post_contenido, post_tags, post_status) VALUES ('{$post_titulo}', {$post_cat_id}, '{$post_autor}', '{$post_fecha}', '{$post_img}', '{$post_contenido}', '{$post_tags}', '{$post_status}')");
+            f_confirmar($query);
+            f_crear_msj(f_mostrar_msj_success('Post creado correctamente!!!'));
+            f_redirigir('index.php?posts');
+        }
+    }
     function f_show_posts_admin(){
         $query = f_query("SELECT * FROM posts");
         f_confirmar($query);
         while($fila = f_fetch_array($query)){
             $posts = <<<DELIMITADOR
                 <tr>
-                    <td>1</td>
-                    <td>1</td>
-                    <td>Curso php</td>
-                    <td>Jaimito</td>
-                    <td>2021-01-01</td>
-                    <td>IMG</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia illo aperiam, dolorum rem necessitatibus alias cupiditate repellat a inventore exercitationem asperiores hic consequuntur adipisci est? Illo nam dignissimos voluptatibus? Quidem.</td>
-                    <td>curso, php, nuevo</td>
-                    <td>0</td>
-                    <td>publicado</td>
+                    <td>{$fila['post_id']}</td>
+                    <td>{$fila['post_cat_id']}</td>
+                    <td>{$fila['post_titulo']}</td>
+                    <td>{$fila['post_autor']}</td>
+                    <td>{$fila['post_fecha']}</td>
+                    <td>
+                        <img src="../img/{$fila['post_img']}" alt="" width="150px">
+                    </td>
+                    <td>{$fila['post_contenido']}</td>
+                    <td>{$fila['post_tags']}</td>
+                    <td>{$fila['post_vistas']}</td>
+                    <td>{$fila['post_status']}</td>
                     <td>
                         <a href="#" class="btn btn-primary">editar</a>
                     </td>

@@ -3,6 +3,9 @@
 </div>
 <div class="row">
     <div class="col-md-12">
+        <div>
+            <?php f_mostrar_msj(); ?>
+        </div>
         <table class="table table-hover">
             <thead>
                 <tr>
