@@ -95,6 +95,34 @@ DELIMITADOR;
     }
 
     // ⚡⚡ BACK
+    function f_show_posts_admin(){
+        $query = f_query("SELECT * FROM posts");
+        f_confirmar($query);
+        while($fila = f_fetch_array($query)){
+            $posts = <<<DELIMITADOR
+                <tr>
+                    <td>1</td>
+                    <td>1</td>
+                    <td>Curso php</td>
+                    <td>Jaimito</td>
+                    <td>2021-01-01</td>
+                    <td>IMG</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia illo aperiam, dolorum rem necessitatibus alias cupiditate repellat a inventore exercitationem asperiores hic consequuntur adipisci est? Illo nam dignissimos voluptatibus? Quidem.</td>
+                    <td>curso, php, nuevo</td>
+                    <td>0</td>
+                    <td>publicado</td>
+                    <td>
+                        <a href="#" class="btn btn-primary">editar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">borrar</a>
+                    </td>
+                </tr>
+DELIMITADOR;
+            echo $posts;
+        }
+
+    }
     function f_agregar_categoria(){
         if(isset($_POST['guardar'])){
             $cat_nombre = f_escape_string(trim($_POST['cat_name']));
@@ -134,4 +162,5 @@ DELIMITADOR;
             f_redirigir("index.php?categorias");
         }
     }
+
 ?>
