@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-6">
         <?php f_posts_add(); ?>
-        <form action="" method="post">
+        <form action="" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="">Título</label>
                 <input type="text" class="form-control" name="post_titulo">

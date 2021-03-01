@@ -38,6 +38,9 @@
                         if(isset($_GET['posts_add'])){
                             include(TEMPLATE_BACK . DS . "posts_add.php");
                         }
+                        if(isset($_GET['posts_edit'])){
+                            include(TEMPLATE_BACK . DS . "posts_edit.php");
+                        }
                     
                     ?>
 

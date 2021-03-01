@@ -346,4 +346,31 @@ ul {
         color: #fff;
         text-transform: uppercase; }
 
+.servicios__contenedor__box {
+  display: flex;
+  justify-content: space-between; }
+  .servicios__contenedor__box__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% / 3 - 2rem); }
+    .servicios__contenedor__box__item__iconBox {
+      width: 12.8rem;
+      height: 12.8rem;
+      background-color: #fed136;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 6.4rem;
+      border-radius: 50%;
+      margin-bottom: 3rem; }
+    .servicios__contenedor__box__item--parrafo {
+      font-family: "Roboto Slab", serif;
+      font-size: 1.6rem;
+      color: #6c757d;
+      text-align: center;
+      margin-top: 2rem;
+      line-height: 2.8rem; }
+
 /*# sourceMappingURL=estilos.css.map */

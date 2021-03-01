@@ -1,0 +1,34 @@
+.servicios{
+    &__contenedor{
+        &__box{
+            display: flex;
+            justify-content: space-between;
+            &__item{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: calc(100% / 3 - 2rem);
+                &__iconBox{
+                    width: 12.8rem;
+                    height: 12.8rem;
+                    background-color: #fed136;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 6.4rem;
+                    border-radius: 50%;
+                    margin-bottom: 3rem;
+                }
+                &--parrafo{
+                    font-family: $font-roboto;
+                    font-size: 1.6rem;
+                    color: #6c757d;
+                    text-align: center;
+                    margin-top: 2rem;
+                    line-height: 2.8rem;
+                }
+            }
+        }
+    }
+}

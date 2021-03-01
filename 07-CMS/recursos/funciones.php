@@ -103,10 +103,16 @@ DELIMITADOR;
             $post_cat_id = f_escape_string(trim($_POST['post_cat_id']));
             $post_autor = f_escape_string(trim($_POST['post_autor']));
             $post_fecha = f_escape_string(trim($_POST['post_fecha']));
-            $post_img = f_escape_string(trim($_POST['post_img']));
             $post_contenido = f_escape_string(trim($_POST['post_contenido']));
             $post_tags = f_escape_string(trim($_POST['post_tags']));
             $post_status = f_escape_string(trim($_POST['post_status']));
+            
+            // $post_img = $_FILES['post_img'];
+            $post_img = f_escape_string(trim($_FILES['post_img']['name']));
+            $post_img_temp = $_FILES['post_img']['tmp_name'];
+            // print_r($post_img);
+            // $post_img = f_escape_string(trim($_POST['post_img']));
+            move_uploaded_file($post_img_temp, "../img/{$post_img}");
 
             $query = f_query("INSERT INTO posts (post_titulo, post_cat_id, post_autor, post_fecha, post_img, post_contenido, post_tags, post_status) VALUES ('{$post_titulo}', {$post_cat_id}, '{$post_autor}', '{$post_fecha}', '{$post_img}', '{$post_contenido}', '{$post_tags}', '{$post_status}')");
             f_confirmar($query);
@@ -133,7 +139,7 @@ DELIMITADOR;
                     <td>{$fila['post_vistas']}</td>
                     <td>{$fila['post_status']}</td>
                     <td>
-                        <a href="#" class="btn btn-primary">editar</a>
+                        <a href="index.php?posts_edit={$fila['post_id']}" class="btn btn-primary">editar</a>
                     </td>
                     <td>
                         <a href="#" class="btn btn-danger">borrar</a>
