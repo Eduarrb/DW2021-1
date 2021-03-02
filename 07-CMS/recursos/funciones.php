@@ -82,7 +82,7 @@ DELIMITADOR;
                     <p class="card-text">
                         {$fila['post_contenido']}
                     </p>
-                    <a href="post.php" class="btn btn-primary">Leer más &rarr;</a>
+                    <a href="post.php?post_id={$fila['post_id']}" class="btn btn-primary">Leer más &rarr;</a>
                 </div>
                 <div class="card-footer text-muted">
                     Publicado el {$fila['post_fecha']} por
