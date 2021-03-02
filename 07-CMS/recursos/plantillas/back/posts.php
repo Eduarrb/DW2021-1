@@ -45,3 +45,12 @@
         </table>
     </div>
 </div>
+<?php 
+    if(isset($_GET['delete'])){
+        $id_delete = f_escape_string(trim($_GET['delete']));
+        $query = f_query("DELETE FROM posts WHERE post_id = {$id_delete}");
+        f_confirmar($query);
+        f_crear_msj(f_mostrar_msj_success("Post eliminado correctamente"));
+        f_redirigir("index.php?posts");
+    }
+?>

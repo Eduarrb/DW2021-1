@@ -103,9 +103,9 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-success" name="guardar">
+                <input type="submit" class="btn btn-success" name="guardar" value="Editar">
             </div>
         </form>
-        
+        <?php f_posts_edit($post_id); ?>
     </div>
 </div>

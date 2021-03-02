@@ -52,7 +52,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <input type="submit" class="btn btn-success" name="guardar">
+                <input type="submit" class="btn btn-success" name="guardar" value="Guardar">
             </div>
         </form>
         

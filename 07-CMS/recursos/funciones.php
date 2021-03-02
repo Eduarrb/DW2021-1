@@ -95,6 +95,34 @@ DELIMITADOR;
     }
 
     // ⚡⚡ BACK
+    function f_posts_edit($post_id){
+        if(isset($_POST['guardar'])){
+            $post_titulo = f_escape_string(trim($_POST['post_titulo']));
+            $post_cat_id = f_escape_string(trim($_POST['post_cat_id']));
+            $post_autor = f_escape_string(trim($_POST['post_autor']));
+            $post_fecha = f_escape_string(trim($_POST['post_fecha']));
+            $post_contenido = f_escape_string(trim($_POST['post_contenido']));
+            $post_tags = f_escape_string(trim($_POST['post_tags']));
+            $post_status = f_escape_string(trim($_POST['post_status']));
+            
+            $post_img = f_escape_string(trim($_FILES['post_img']['name']));
+            $post_img_temp = $_FILES['post_img']['tmp_name'];
+
+            move_uploaded_file($post_img_temp, "../img/{$post_img}");
+
+            if(empty($post_img)){
+                $query = f_query("SELECT * FROM posts WHERE post_id = {$post_id}");
+                f_confirmar($query);
+                $fila = f_fetch_array($query);
+                $post_img = $fila['post_img'];
+            }
+
+            $query = f_query("UPDATE posts SET post_titulo = '{$post_titulo}', post_cat_id = {$post_cat_id}, post_autor = '{$post_autor}', post_fecha = '{$post_fecha}', post_contenido = '{$post_contenido}', post_tags = '{$post_tags}', post_status = '{$post_status}', post_img = '{$post_img}' WHERE post_id = {$post_id}");
+            f_confirmar($query);
+            f_crear_msj(f_mostrar_msj_success('Post editado correctamente'));
+            f_redirigir('index.php?posts');
+        }
+    }
     function f_posts_add(){
         if(isset($_POST['guardar'])){
             // echo 'funciona';
@@ -142,7 +170,7 @@ DELIMITADOR;
                         <a href="index.php?posts_edit={$fila['post_id']}" class="btn btn-primary">editar</a>
                     </td>
                     <td>
-                        <a href="#" class="btn btn-danger">borrar</a>
+                        <a href="index.php?posts&delete={$fila['post_id']}" class="btn btn-danger">borrar</a>
                     </td>
                 </tr>
 DELIMITADOR;
