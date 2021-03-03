@@ -36,7 +36,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="index.php?categorias">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Categorias</span></a>
+                    <span>Categorias</span>
+                </a>
             </li>
             <!-- <li class="nav-item">
                 <a class="nav-link" href="index.php?posts">
@@ -61,9 +62,10 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
+                <a class="nav-link" href="index.php?comentarios">
+                    <i class="fas fa-comments"></i>
+                    <span>Comentarios</span>
+                </a>
             </li>
 
             <!-- Nav Item - Tables -->

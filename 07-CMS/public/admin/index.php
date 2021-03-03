@@ -41,6 +41,9 @@
                         if(isset($_GET['posts_edit'])){
                             include(TEMPLATE_BACK . DS . "posts_edit.php");
                         }
+                        if(isset($_GET['comentarios'])){
+                            include(TEMPLATE_BACK . DS . "comentarios.php");
+                        }
                     
                     ?>
 

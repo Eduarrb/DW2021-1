@@ -65,51 +65,37 @@
 
         <!-- Comments Form -->
         <div class="card my-4">
-          <h5 class="card-header">Leave a Comment:</h5>
+          <h5 class="card-header">Deja un comentario:</h5>
           <div class="card-body">
-            <form>
+            <form action="" method="post">
               <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
+                <input type="text" class="form-control" name="com_nombre" placeholder="Escribe tu nombre">
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <div class="form-group">
+                <input type="email" class="form-control" name="com_email" placeholder="Escribe tu E-mail">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" rows="3" placeholder="Escribe tu comentario" name="com_mensaje"></textarea>
+              </div>
+              <input type="submit" class="btn btn-primary" name="guardar" value="Comentar!">
             </form>
+            <?php f_comentarios_add($post_id); ?>
           </div>
         </div>
 
         <!-- Single Comment -->
-        <div class="media mb-4">
+        <?php f_show_comentarios_front($post_id); ?>
+
+        <!-- <div class="media mb-4">
           <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
           <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
+            <div class="d-flex justify-content-between">
+              <h5 class="mt-0">Commenter Name</h5>
+              <div>2021-03-03 15:15:00</div>
+            </div>
             Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
           </div>
-        </div>
-
-        <!-- Comment with nested comments -->
-        <div class="media mb-4">
-          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-          <div class="media-body">
-            <h5 class="mt-0">Commenter Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-            <div class="media mt-4">
-              <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-              <div class="media-body">
-                <h5 class="mt-0">Commenter Name</h5>
-                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-              </div>
-            </div>
-
-          </div>
-        </div>
+        </div> -->
 
       </div>
 

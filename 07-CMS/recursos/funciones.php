@@ -69,6 +69,38 @@ DELIMITADOR;
 
 
     // ⚡⚡ FRONT
+    function f_show_comentarios_front($post_id){
+        $query = f_query("SELECT * FROM comentarios WHERE com_post_id = {$post_id} AND com_status = 'aprobado' ORDER BY com_id DESC");
+        f_confirmar($query);
+        while($fila = f_fetch_array($query)){
+            $comentarios = <<<DELIMITADOR
+                <div class="media mb-4">
+                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                    <div class="media-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="mt-0">{$fila['com_nombre']}</h5>
+                            <div>{$fila['com_fecha']}</div>
+                        </div>
+                        {$fila['com_mensaje']}
+                    </div>
+                </div>
+DELIMITADOR;
+            echo $comentarios;
+        }
+
+    }
+    function f_comentarios_add($post_id){
+        if(isset($_POST['guardar'])){
+            // echo 'funcionaaaaaaaa';
+            $com_nombre = f_escape_string(trim($_POST['com_nombre']));
+            $com_email = f_escape_string(trim($_POST['com_email']));
+            $com_mensaje = f_escape_string(trim($_POST['com_mensaje']));
+
+            $query = f_query("INSERT INTO comentarios (com_post_id, com_nombre, com_email, com_mensaje, com_fecha, com_status) VALUES ({$post_id}, '{$com_nombre}', '{$com_email}', '{$com_mensaje}', NOW(), 'pendiente')");
+            f_confirmar($query);
+            f_redirigir("post.php?post_id={$post_id}");
+        }
+    }
     function f_show_posts_front(){
         $query = f_query("SELECT * FROM posts");
         f_confirmar($query);
@@ -95,6 +127,9 @@ DELIMITADOR;
     }
 
     // ⚡⚡ BACK
+    function f_show_comentarios_back(){
+        
+    }
     function f_posts_edit($post_id){
         if(isset($_POST['guardar'])){
             $post_titulo = f_escape_string(trim($_POST['post_titulo']));
