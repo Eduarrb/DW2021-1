@@ -20,7 +20,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <?php f_show_comentarios_back(); ?>
+                <!-- <tr>
                     <td>1</td>
                     <td>
                         <a href="../post.php?post_id=1" target="_blank">Curso php</a>
@@ -36,8 +37,9 @@
                     <td>
                         <a href="#" class="btn btn-danger">borrar</a>
                     </td>
-                </tr>
+                </tr> -->
             </tbody>
         </table>
+        <?php f_comentarios_aprobar(); ?>
     </div>
 </div>

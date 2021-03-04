@@ -1,5 +1,13 @@
     <div class="col-md-4">
-
+        <div class="card my-4">
+          <h5 class="card-header"></h5>
+          <div class="card-body">
+            <div>
+              <a href="#" class="btn btn-primary">Login</a>
+              <a href="#" class="btn btn-success">Registrate</a>
+            </div>
+          </div>
+        </div>
         <!-- Search Widget -->
         <div class="card my-4">
           <h5 class="card-header">Search</h5>

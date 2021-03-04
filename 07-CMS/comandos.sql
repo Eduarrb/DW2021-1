@@ -41,3 +41,19 @@ CREATE TABLE comentarios(
     com_status VARCHAR(30) NOT NULL
 )
 
+SELECT b.post_titulo, a.*
+    FROM comentarios a
+    INNER JOIN posts b ON a.com_post_id = b.post_id
+    WHERE com_status = 'pendiente'
+
+CREATE TABLE usuarios(
+    user_id INT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    user_nombre VARCHAR(255) NOT NULL,
+    user_apellido VARCHAR(255) NOT NULL,
+    user_email VARCHAR(255) NOT NULL,
+    user_img TEXT,
+    user_pass VARCHAR(255) NOT NULL,
+    user_token TEXT,
+    user_status TINYINT DEFAULT 0,
+    user_rol VARCHAR(255) NOT NULL
+)

@@ -69,6 +69,22 @@ DELIMITADOR;
 
 
     // ⚡⚡ FRONT
+    function f_validar_user_reg(){
+        $min = 4;
+        $max = 20;
+
+        if(isset($_POST['registrar'])){
+            // echo 'funciona';
+            $user_nombre = f_escape_string(trim($_POST['user_nombre']));
+            $user_apellido = f_escape_string(trim($_POST['user_apellido']));
+            $user_email = f_escape_string(trim($_POST['user_email']));
+            $user_pass = f_escape_string(trim($_POST['user_pass']));
+            $user_passConfirm = f_escape_string(trim($_POST['user_passConfirm']));
+
+            echo $user_nombre;
+        }
+
+    }
     function f_show_comentarios_front($post_id){
         $query = f_query("SELECT * FROM comentarios WHERE com_post_id = {$post_id} AND com_status = 'aprobado' ORDER BY com_id DESC");
         f_confirmar($query);
@@ -127,8 +143,41 @@ DELIMITADOR;
     }
 
     // ⚡⚡ BACK
+    function f_comentarios_aprobar(){
+        if(isset($_GET['aprobar'])){
+            $com_id = f_escape_string(trim($_GET['aprobar']));
+            // echo $com_id;
+            $query = f_query("UPDATE comentarios SET com_status = 'aprobado' WHERE com_id = {$com_id}");
+            f_confirmar($query);
+            f_crear_msj(f_mostrar_msj_success("Comentario aprobado correctamente!"));
+            f_redirigir("index.php?comentarios");
+        }
+    }
     function f_show_comentarios_back(){
-        
+        $query = f_query("SELECT b.post_titulo AS titulo_post, a.* FROM comentarios a INNER JOIN posts b ON a.com_post_id = b.post_id WHERE com_status = 'pendiente'");
+        f_confirmar($query);
+        while($fila = f_fetch_array($query)){
+            $comentarios = <<<DELIMITADOR
+                <tr>
+                    <td>{$fila['com_id']}</td>
+                    <td>
+                        <a href="../post.php?post_id={$fila['com_post_id']}" target="_blank">{$fila['titulo_post']}</a>
+                    </td>
+                    <td>{$fila['com_nombre']}</td>
+                    <td>{$fila['com_email']}</td>
+                    <td>{$fila['com_mensaje']}</td>
+                    <td>{$fila['com_fecha']}</td>
+                    <td>{$fila['com_status']}</td>
+                    <td>
+                        <a href="index.php?comentarios&aprobar={$fila['com_id']}" class="btn btn-primary">aprobar</a>
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-danger">borrar</a>
+                    </td>
+                </tr>
+DELIMITADOR;
+            echo $comentarios;
+        }
     }
     function f_posts_edit($post_id){
         if(isset($_POST['guardar'])){
