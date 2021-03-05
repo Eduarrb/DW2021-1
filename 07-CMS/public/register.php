@@ -17,7 +17,11 @@
                                 <h1 class="h4 text-gray-900 mb-4">Crear una Cuenta!</h1>
                             </div>
                             <div>
-                                <?php f_mostrar_msj(); ?>
+                                <?php 
+                                    f_mostrar_msj(); 
+
+                                    f_validar_user_reg();
+                                ?>
                             </div>
                             <form class="user" action="" method="post">
                                 <div class="form-group row">
@@ -32,7 +36,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Correo Electrónico" name="user_email">
+                                        placeholder="Correo Electrónico" name="user_email" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -51,7 +55,6 @@
                                     Register Account
                                 </a> -->
                             </form>
-                            <?php f_validar_user_reg(); ?>
                             <hr>
                             <div class="text-center">
                                 <a class="small" href="forgot-password.php">¿Olvidate tu contraseña?</a>

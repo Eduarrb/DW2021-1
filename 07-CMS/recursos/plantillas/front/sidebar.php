@@ -3,8 +3,8 @@
           <h5 class="card-header"></h5>
           <div class="card-body">
             <div>
-              <a href="#" class="btn btn-primary">Login</a>
-              <a href="#" class="btn btn-success">Registrate</a>
+              <a href="login.php" class="btn btn-primary">Login</a>
+              <a href="register.php" class="btn btn-success">Registrate</a>
             </div>
           </div>
         </div>

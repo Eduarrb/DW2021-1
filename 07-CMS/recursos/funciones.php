@@ -65,13 +65,20 @@ DELIMITADOR;
 DELIMITADOR;
         return $msj;
     }
-
-
+    function f_email_existe($email){
+        $query = f_query("SELECT * FROM usuarios WHERE user_email = '{$email}'");
+        if(mysqli_num_rows($query) >= 1){
+            return true;
+        }
+        return false;
+    }
 
     // ⚡⚡ FRONT
     function f_validar_user_reg(){
         $min = 4;
         $max = 20;
+
+        $errores = [];
 
         if(isset($_POST['registrar'])){
             // echo 'funciona';
@@ -81,9 +88,59 @@ DELIMITADOR;
             $user_pass = f_escape_string(trim($_POST['user_pass']));
             $user_passConfirm = f_escape_string(trim($_POST['user_passConfirm']));
 
-            echo $user_nombre;
+            if(strlen($user_nombre) < $min){
+                // echo 'tu nombre debe tener mas de 4 caracteres!';
+                $errores[] = "Tu nombre no puede ser menos de {$min} caracteres";
+            }
+            if(strlen($user_nombre) > $max){
+                $errores[] = "Tu nombre no puede tener mas de {$max} caracteres";
+            }
+            if(strlen($user_apellido) < $min){
+                // echo 'tu apellido debe tener mas de 4 caracteres!';
+                $errores[] = "Tu apellido no puede ser menos de {$min} caracteres";
+            }
+            if(strlen($user_apellido) > $max){
+                $errores[] = "Tu apellido no puede tener mas de {$max} caracteres";
+            }
+            // verdadero o falso
+            if(f_email_existe($user_email)){
+                $errores[] = "Lo sentimos, el correo {$user_email} ya existe!";
+            }
+            if($user_pass != $user_passConfirm){
+                $errores[] = "Las contraseñas deben ser iguales";
+            }
+            if(!empty($errores)){
+                foreach($errores as $error){
+                    echo f_mostrar_msj_danger($error);
+                }
+            }
+            else{
+                if(f_registrar_usuario($user_nombre, $user_apellido, $user_email, $user_pass)){
+                    f_crear_msj(f_mostrar_msj_success("Registro satisfactorio, revisa tu correo o cuenta de spam para la activación de tu cuenta. Esto puede tardar unos minutos!"));
+                    f_redirigir("register.php");
+                }
+                else{
+                    f_crear_msj(f_mostrar_msj_danger("Lo sentimos, no pudimos registrar tu usuario!"));
+                    f_redirigir("register.php");
+                }
+            }
         }
+    }
+    function f_registrar_usuario($nombre, $apellido, $email, $pass){
+        $user_nombre = f_escape_string(trim($nombre));
+        $user_apellido = f_escape_string(trim($apellido));
+        $user_email = f_escape_string(trim($email));
+        $user_pass = f_escape_string(trim($pass));
 
+        if(f_email_existe($user_email)){
+            return false;
+        }
+        else{
+            $query = f_query("INSERT INTO usuarios (user_nombre, user_apellido, user_email, user_pass, user_rol) VALUES ('{$user_nombre}', '{$user_apellido}', '{$user_email}', '{$user_pass}', 'suscriptor')");
+            f_confirmar($query);
+            return true;
+        }
+        // return true;
     }
     function f_show_comentarios_front($post_id){
         $query = f_query("SELECT * FROM comentarios WHERE com_post_id = {$post_id} AND com_status = 'aprobado' ORDER BY com_id DESC");
