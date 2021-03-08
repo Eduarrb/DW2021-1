@@ -136,12 +136,46 @@ DELIMITADOR;
             return false;
         }
         else{
-            $query = f_query("INSERT INTO usuarios (user_nombre, user_apellido, user_email, user_pass, user_rol) VALUES ('{$user_nombre}', '{$user_apellido}', '{$user_email}', '{$user_pass}', 'suscriptor')");
+            // 1) ENCRIPTAR PASS
+            $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, array('cost' => 12));
+            // 2) MANDAR CORREOS PARA ACTIVACION DE USUARIO
+            $user_token = md5($user_email . microtime());
+            $query = f_query("INSERT INTO usuarios (user_nombre, user_apellido, user_email, user_pass, user_token, user_rol) VALUES ('{$user_nombre}', '{$user_apellido}', '{$user_email}', '{$user_pass}', '{$user_token}', 'suscriptor')");
             f_confirmar($query);
+            $mensaje = "Por favor has click en el boton o en el enlace para activar tu cuenta. \n <a href='http://localhost/dw2021-1/07-CMS/public/activate.php?email={$user_email}&token={$user_token}'>Activar cuenta</a>";
+            f_send_email($user_email, 'Activacion de cuenta', $mensaje);
             return true;
         }
         // return true;
     }
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    require '../vendor/autoload.php';
+
+    function f_send_email($email, $asunto, $msj, $headers=null){
+        $mail = new PHPMailer();
+        $mail->isSMTP();
+        $mail->Host = 'smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Username = '5c040c9f941e53';
+        $mail->Password = '939e9aa1c7e00f';
+        $mail->Port = 2525;
+        $mail->SMTPSecure = 'tls';
+        $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
+
+        $mail->setFrom('registro@blogeduardo.com', 'admin');
+        $mail->addAddress($email);
+        $mail->Subject = $asunto;
+        $mail->Body = $msj;
+        if($mail->send()){
+            $emailSent = true;
+        }
+    }
+
     function f_show_comentarios_front($post_id){
         $query = f_query("SELECT * FROM comentarios WHERE com_post_id = {$post_id} AND com_status = 'aprobado' ORDER BY com_id DESC");
         f_confirmar($query);
