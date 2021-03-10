@@ -74,6 +74,72 @@ DELIMITADOR;
     }
 
     // ⚡⚡ FRONT
+    function f_login_user($email, $pass){
+        // algoritmo de inicio de sesion
+        $query = f_query("SELECT * FROM usuarios WHERE user_email = '{$email}' AND user_status = 1");
+        f_confirmar($query);
+
+        if(mysqli_num_rows($query) == 1){
+            $fila = f_fetch_array($query);
+            $user_id = $fila['user_id'];
+            $user_nombre = $fila['user_nombre'];
+            $user_apellido = $fila['user_apellido'];
+            $user_pass = $fila['user_pass'];
+            $user_rol = $fila['user_rol'];
+
+            if(password_verify($pass, $user_pass)){
+                // 1) SESIONES
+                $_SESSION['user_id'] = $user_id;
+                $_SESSION['usuario'] = $user_nombre . " " . $user_apellido;
+                $_SESSION['user_rol'] = $user_rol;
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+        else{
+            return false;
+        }
+    }
+    function f_validar_user_login(){
+        if(isset($_POST['login'])){
+            // echo 'funciona';
+            $user_email = f_escape_string(trim($_POST['user_email']));
+            $user_pass = f_escape_string(trim($_POST['user_pass']));
+
+            // echo $user_email . $user_pass;
+            if(f_login_user($user_email, $user_pass)){
+                f_redirigir('./');
+            }
+            else{
+                f_crear_msj(f_mostrar_msj_danger('Tu correo o password son incorrectos'));
+                f_redirigir("login.php");
+            }
+        }
+    }
+    function f_activar_usuario(){
+        // echo 'usuario activado';
+        if(isset($_GET['email']) && isset($_GET['token'])){
+            $user_email = f_escape_string(trim($_GET['email']));
+            $user_token = f_escape_string(trim($_GET['token']));
+
+            $query = f_query("SELECT * FROM usuarios WHERE user_email = '{$user_email}' AND user_token = '{$user_token}'");
+            f_confirmar($query);
+
+            $fila = f_fetch_array($query);
+            // key - value pair
+            // user_id => 1
+            $user_id = $fila['user_id'];
+
+            if(mysqli_num_rows($query) == 1){
+                $query = f_query("UPDATE usuarios SET user_status = 1, user_token = '' WHERE user_id = {$user_id}");
+                f_confirmar($query);
+                f_crear_msj(f_mostrar_msj_success("Su cuenta ha sido verificada, por favor inicie sesión"));
+                f_redirigir("login.php");
+            }
+        }
+    }
     function f_validar_user_reg(){
         $min = 4;
         $max = 20;
@@ -153,7 +219,7 @@ DELIMITADOR;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    require '../vendor/autoload.php';
+    // require '../vendor/autoload.php';
 
     function f_send_email($email, $asunto, $msj, $headers=null){
         $mail = new PHPMailer();

@@ -2,6 +2,8 @@
 
 <?php include(TEMPLATE_FRONT . DS . "head_auth.php"); ?>
 
+
+
 <body class="bg-gradient-primary">
 
     <div class="container">
@@ -19,7 +21,7 @@
                             <div>
                                 <?php 
                                     f_mostrar_msj(); 
-
+                                    
                                     f_validar_user_reg();
                                 ?>
                             </div>

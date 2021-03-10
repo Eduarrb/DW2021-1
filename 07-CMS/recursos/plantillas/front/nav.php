@@ -19,9 +19,11 @@
                 // }
 
                 f_confirmar($query);
-
+                // $row = f_fetch_array($query);
+                // print_r($row);
                 // while($fila = mysqli_fetch_array($query)){
                 while($fila = f_fetch_array($query)){
+                    // echo $fila;
                     ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><?php echo $fila['cat_nombre'];  ?></a>
