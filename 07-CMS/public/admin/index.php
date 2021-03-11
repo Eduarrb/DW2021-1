@@ -25,12 +25,9 @@
                         // echo __DIR__;
                         // echo $_SERVER['REQUEST_URI'];
 
-                        echo $_SESSION['user_rol'];
-
                         if($_SERVER['REQUEST_URI'] == '/dw2021-1/07-CMS/public/admin/' || $_SERVER['REQUEST_URI'] == '/dw2021-1/07-CMS/public/admin/index.php'){
                             include(TEMPLATE_BACK . DS . "dashboard.php");
                         }
-
                         if(isset($_GET['categorias'])){
                             include(TEMPLATE_BACK . DS . "categorias.php");
                         }

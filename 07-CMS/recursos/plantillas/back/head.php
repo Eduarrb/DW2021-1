@@ -1,3 +1,12 @@
+<?php
+    if(!isset($_SESSION['user_id']) && !isset($_SESSION['user_rol']) && !isset($_SESSION['usuario'])){
+        f_redirigir("../");
+    }
+    if($_SESSION['user_rol'] != 'admin'){
+        f_redirigir("../");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 

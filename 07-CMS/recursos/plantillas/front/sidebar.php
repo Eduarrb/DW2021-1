@@ -3,8 +3,23 @@
           <h5 class="card-header"></h5>
           <div class="card-body">
             <div>
-              <a href="login.php" class="btn btn-primary">Login</a>
-              <a href="register.php" class="btn btn-success">Registrate</a>
+              <?php
+                if(isset($_SESSION['user_rol'])){
+                  ?>
+
+                  Bienvenido, <a href="perfil.php?usuario=<?php echo $_SESSION['user_id']; ?>"><?php echo $_SESSION['usuario']; ?></a>   
+                  <div>
+                    <a href="logout.php" class="btn btn-info">Logout</a>
+                  </div>
+
+                <?php }
+
+                else{
+                  ?>
+                    <a href="login.php" class="btn btn-primary">Login</a>
+                    <a href="register.php" class="btn btn-success">Registrate</a>
+                <?php }
+              ?>
             </div>
           </div>
         </div>
