@@ -74,6 +74,44 @@ DELIMITADOR;
     }
 
     // ⚡⚡ FRONT
+    // $_SESSION['jaimito'] = 'jaimito';
+    // $num = 1;
+    function f_token_generador(){
+        return $token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
+    }
+    function f_recover_password(){
+        if(isset($_POST['restablecer'])){
+            if(isset($_SESSION['token']) && $_SESSION['token'] == $_POST['token']){
+                $user_email = f_escape_string(trim($_POST['user_email']));
+                // echo $user_email;
+                if(f_email_existe($user_email)){
+                    // echo "el correo existe";
+                    $codigo_validacion = md5($user_email . microtime());
+                    // 🔥🔥 la hora del servidor esta 7 horas adelantado 
+                    setcookie("temp_access_code", $codigo_validacion, time() + 60);
+                    setcookie("prueba", $codigo_validacion, time() + 10);
+
+                    // 16:51:32
+                    // 16:52:32
+                    // echo $codigo_validacion;
+                    // echo time();
+                    // echo "<br>";
+                    // echo time() + 1;
+
+                }
+                else{
+                    f_crear_msj(f_mostrar_msj_danger("El correo no existe!"));
+                    f_redirigir("forgot-password.php");
+                }
+
+            }
+            else{
+                // echo 'el token no es correcto';
+                f_crear_msj(f_mostrar_msj_danger("Lo sentimos, no se puede completar la operación!"));
+                f_redirigir("forgot-password.php");
+            }
+        }
+    }
     function f_login_user($email, $pass){
         // algoritmo de inicio de sesion
         $query = f_query("SELECT * FROM usuarios WHERE user_email = '{$email}' AND user_status = 1");

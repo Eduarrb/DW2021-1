@@ -15,6 +15,9 @@
 
         <h1 class="my-4">Bienvenido a mi blog
           <small>Posts recientes</small>
+          <?php
+            echo $_SESSION['token'];
+          ?>
         </h1>
 
         <!-- Blog Post -->

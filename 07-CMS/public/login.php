@@ -1,10 +1,6 @@
 <?php require_once("../recursos/config.php"); ?>
 
 <?php include(TEMPLATE_FRONT . DS . "head_auth.php"); ?>
-<?php
-    // algo que tiene que ejecutar despues de envio del formulario
-
-?>
 
 <body class="bg-gradient-primary">
 
