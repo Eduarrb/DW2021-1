@@ -76,6 +76,26 @@ DELIMITADOR;
     // ⚡⚡ FRONT
     // $_SESSION['jaimito'] = 'jaimito';
     // $num = 1;
+
+    function f_restablecer_pass(){
+        if(!isset($_COOKIE['temp_access_code'])){
+            f_crear_msj(f_mostrar_msj_danger("Lo sentimos, el tiempo de validacion ha caducado, intentelo otra vez"));
+            f_redirigir("forgot-password.php");
+        }
+        else if(empty($_GET['email']) && empty($_GET['token'])){
+            f_crear_msj(f_mostrar_msj_danger("Lo sentimos, no se pudo verificar los datos!"));
+            f_redirigir("forgot-password.php");
+        }
+        else{
+            
+        }
+        // if(isset($_POST['restablecer'])){
+        //     if(!isset($_GET['email']) && !isset($_GET['token'])){
+        //         f_crear_msj(f_mostrar_msj_danger("Lo sentimos, no se pudo verificar los datos"));
+        //         f_redirigir("forgot-password.php");
+        //     }
+        // }
+    }
     function f_token_generador(){
         return $token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
     }
@@ -88,17 +108,20 @@ DELIMITADOR;
                     // echo "el correo existe";
                     $codigo_validacion = md5($user_email . microtime());
                     // 🔥🔥 la hora del servidor esta 7 horas adelantado 
-                    setcookie("temp_access_code", $codigo_validacion, time() + 60);
-                    setcookie("prueba", $codigo_validacion, time() + 10);
+                    setcookie("temp_access_code", $codigo_validacion, time() + 300);
+                    $query = f_query("UPDATE usuarios SET user_token = '{$codigo_validacion}' WHERE user_email = '{$user_email}'");
+                    f_confirmar($query);
+                    // f_send_email($email, $asunto, $msj, $headers=null)
+                    $asunto = "RESTABLECER CONTRASEÑA";
+                    $msj = "Haga click en el enlace para cambiar su contraseña <a href='http://localhost/dw2021-1/07-CMS/public/restablecer.php?email={$user_email}&token={$codigo_validacion}'>RESTABLECER CONTRASEÑA</a>";
+                    $headers = "De: noreply@tudominio.com";
 
-                    // 16:51:32
-                    // 16:52:32
-                    // echo $codigo_validacion;
-                    // echo time();
-                    // echo "<br>";
-                    // echo time() + 1;
-                    echo $_SERVER['REQUEST_TIME'];
-
+                    if(!f_send_email($user_email, $asunto, $msj, $headers)){
+                        f_crear_msj(f_mostrar_msj_danger("El correo no se puedo enviar!"));
+                        f_redirigir("forgot-password.php");
+                    }
+                    f_crear_msj(f_mostrar_msj_success("Se ha enviado un correo a tu cuenta, por favor verifique para restablecer su contraseña!"));
+                    f_redirigir("forgot-password.php");
                 }
                 else{
                     f_crear_msj(f_mostrar_msj_danger("El correo no existe!"));
@@ -258,7 +281,7 @@ DELIMITADOR;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    // require '../vendor/autoload.php';
+    require '../vendor/autoload.php';
 
     function f_send_email($email, $asunto, $msj, $headers=null){
         $mail = new PHPMailer();
