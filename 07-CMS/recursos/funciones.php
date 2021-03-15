@@ -97,6 +97,7 @@ DELIMITADOR;
                     // echo time();
                     // echo "<br>";
                     // echo time() + 1;
+                    echo $_SERVER['REQUEST_TIME'];
 
                 }
                 else{

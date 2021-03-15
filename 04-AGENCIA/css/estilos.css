@@ -34,6 +34,12 @@ ul {
   font-weight: 700;
   text-transform: uppercase; }
 
+.descripcion-n4 {
+  font-family: "Roboto Slab", serif;
+  font-size: 1.6rem;
+  color: #6c757d;
+  line-height: 2.8rem; }
+
 .subtitulo-n3 {
   font-family: "Merriweather", serif;
   font-size: 1.6rem;
@@ -418,5 +424,46 @@ ul {
           color: #6c757d;
           margin-top: .5rem;
           display: block; }
+
+.about__contenedor__timeline::before {
+  content: "";
+  width: 2px;
+  background-color: #e9ecef;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%); }
+.about__contenedor__timeline {
+  position: relative; }
+  .about__contenedor__timeline__item {
+    position: relative; }
+    .about__contenedor__timeline__item:not(:last-child) {
+      margin-bottom: 10rem; }
+    .about__contenedor__timeline__item__imgBox {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15rem;
+      height: 15rem;
+      border-radius: 50%;
+      border: 6px solid #e9ecef; }
+      .about__contenedor__timeline__item__imgBox img {
+        width: 100%;
+        border-radius: 50%; }
+    .about__contenedor__timeline__item__panel {
+      width: 30%; }
+      .about__contenedor__timeline__item__panel--titulo {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2.4rem;
+        font-weight: 700;
+        text-transform: uppercase; }
+      .about__contenedor__timeline__item__panel--descri {
+        font-family: "Roboto Slab", serif;
+        font-size: 1.6rem;
+        color: #6c757d;
+        line-height: 2.8rem; }
+  .about__contenedor__timeline .lastItem {
+    height: 16.2rem; }
 
 /*# sourceMappingURL=estilos.css.map */
