@@ -87,7 +87,39 @@ DELIMITADOR;
             f_redirigir("forgot-password.php");
         }
         else{
-            
+            if(isset($_POST['restablecer'])){
+                // echo "funciona";
+                $user_email = f_escape_string(trim($_GET['email']));
+                $user_token = f_escape_string(trim($_GET['token']));
+
+                $query = f_query("SELECT * FROM usuarios WHERE user_email = '{$user_email}' AND user_token = '{$user_token}'");
+                f_confirmar($query);
+                
+                if(mysqli_num_rows($query) == 1){
+                    $user_pass = f_escape_string(trim($_POST['user_pass']));
+                    $user_pass_confirm = f_escape_string(trim($_POST['user_pass_confirm']));
+
+                    if($user_pass != $user_pass_confirm){
+                        f_crear_msj(f_mostrar_msj_danger("Las contraseñas no coinciden"));
+                        // restablecer.php?email=eduardo@gmail.com&token=d91b82ff1e1adef741352a7743f7a3f5
+                        f_redirigir("restablecer.php?email={$user_email}&token={$user_token}");
+                    }
+                    else{
+                        $user_pass = password_hash($user_pass, PASSWORD_BCRYPT, array('cost' => 12));
+                        $query = f_query("UPDATE usuarios SET user_pass = '{$user_pass}', user_token = '' WHERE user_email = '{$user_email}'");
+                        f_confirmar($query);
+                        // unset($_COOKIE['temp_access_code']);
+                        setcookie("temp_access_code", "null", time());
+                        f_crear_msj(f_mostrar_msj_success("Cambio de contraseñas exitoso, Inicie sesión"));
+                        f_redirigir("login.php");
+                    }
+                }
+                else{
+                    f_crear_msj(f_mostrar_msj_danger("Lo sentimos, datos invalidos. Intentelo otra vez"));
+                    f_redirigir('forgot-password.php');
+                }
+
+            }
         }
         // if(isset($_POST['restablecer'])){
         //     if(!isset($_GET['email']) && !isset($_GET['token'])){
@@ -281,7 +313,7 @@ DELIMITADOR;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
 
-    require '../vendor/autoload.php';
+    // require '../vendor/autoload.php';
 
     function f_send_email($email, $asunto, $msj, $headers=null){
         $mail = new PHPMailer();
