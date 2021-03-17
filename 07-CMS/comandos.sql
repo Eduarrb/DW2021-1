@@ -57,3 +57,8 @@ CREATE TABLE usuarios(
     user_status TINYINT DEFAULT 0,
     user_rol VARCHAR(255) NOT NULL
 )
+
+SELECT MONTH(com_fecha) AS mes, COUNT(*) AS cantidad
+    FROM comentarios
+    WHERE YEAR(com_fecha) = YEAR(NOW())
+    GROUP BY MONTH(com_fecha)
