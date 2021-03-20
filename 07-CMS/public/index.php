@@ -34,14 +34,23 @@
         <?php f_show_posts_front(); ?>
 
         <!-- Pagination -->
-        <ul class="pagination justify-content-center mb-4">
+        <!-- <ul class="pagination justify-content-center mb-4">
           <li class="page-item">
             <a class="page-link" href="#">&larr; Older</a>
           </li>
           <li class="page-item disabled">
             <a class="page-link" href="#">Newer &rarr;</a>
           </li>
-        </ul>
+        </ul> -->
+        <!-- <ul class="pagination justify-content-center mb-4"> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">Anterior</a></li> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">10</a></li> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">11</a></li> -->
+          <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">2</a></li> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">14</a></li> -->
+          <!-- <li class="page-item"><a class="page-link" href="#">Siguiente</a></li> -->
+        <!-- </ul> -->
 
       </div>
 

@@ -43,6 +43,9 @@
             unset($_SESSION['mensaje']);
         }
     }
+    function f_row_count($query){
+        return mysqli_num_rows($query);
+    }
     function f_mostrar_msj_success($msj){
         $msj = <<<DELIMITADOR
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -74,10 +77,7 @@ DELIMITADOR;
     }
 
     // ⚡⚡ FRONT
-    // $_SESSION['jaimito'] = 'jaimito';
-    // $num = 1;
-
-    function f_restablecer_pass(){
+     function f_restablecer_pass(){
         if(!isset($_COOKIE['temp_access_code'])){
             f_crear_msj(f_mostrar_msj_danger("Lo sentimos, el tiempo de validacion ha caducado, intentelo otra vez"));
             f_redirigir("forgot-password.php");
@@ -121,12 +121,6 @@ DELIMITADOR;
 
             }
         }
-        // if(isset($_POST['restablecer'])){
-        //     if(!isset($_GET['email']) && !isset($_GET['token'])){
-        //         f_crear_msj(f_mostrar_msj_danger("Lo sentimos, no se pudo verificar los datos"));
-        //         f_redirigir("forgot-password.php");
-        //     }
-        // }
     }
     function f_token_generador(){
         return $token = $_SESSION['token'] = md5(uniqid(mt_rand(), true));
@@ -369,7 +363,82 @@ DELIMITADOR;
         }
     }
     function f_show_posts_front(){
-        $query = f_query("SELECT * FROM posts");
+        // 1) CONTABILIZAR LA CANTIDAD DE DATOS QUE TENGA LA TABLA
+        $query = f_query("SELECT * FROM posts WHERE post_status = 'publicado'");
+        f_confirmar($query);
+
+        $num_rows = f_row_count($query);
+        // $num_rows = 3;
+
+        // 2) OBTENER EL PARAMETRO PAGE DE LA URL
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+        }
+        else{
+            $page = 1;
+        }
+
+        // 3) CALCULAR LA CANTIDAD DE POSTS POR PAGINA
+        $porPagina = 1;
+        $cantiPaginas = ceil($num_rows / $porPagina);
+
+        // 4) VALIDAR QUE LA PAGINACIÓN (PAGE) NO SEA MENOR QUE 1 O IGUAL CERO Y QUE 
+        // TAMPOCO SOBREPASE LA CANTIDAD DE PAGINAS SEGUN LO CALCULADO
+        if($page < 1){
+            $page = 1;
+        }
+        elseif($page > $cantiPaginas){
+            $page = $cantiPaginas;
+        }
+
+        // 5) LA CONSTRUCCIÓN DE LA PLANTILLA DE PAGINACIÓN
+        $listasIntermedias = '';
+        $suma1 = $page + 1;
+        $suma2 = $page + 2;
+        $resta1 = $page - 1;
+        $resta2 = $page - 2;
+
+        // echo $_SERVER['PHP_SELF'];
+
+        if($page == 1){
+            $listasIntermedias .= '<li class="page-item active"><a class="page-link">' . $page . '</a></li>';
+            $listasIntermedias .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $suma1 . '">' . $suma1 . '</a></li>';
+        }
+        elseif($page == $cantiPaginas){
+            $listasIntermedias .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $resta1 . '">' . $resta1 . '</a></li>';
+            $listasIntermedias .= '<li class="page-item active"><a class="page-link">' . $page . '</a></li>';
+        }
+        
+        elseif($page > 1 && $page < $cantiPaginas){
+            $listasIntermedias .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $resta1 . '">' . $resta1 . '</a></li>';
+            $listasIntermedias .= '<li class="page-item active"><a class="page-link">' . $page . '</a></li>';
+            $listasIntermedias .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $suma1 . '">' . $suma1 . '</a></li>';
+        }
+
+        //   <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
+        //   <li class="page-item"><a class="page-link" href="#">10</a></li>
+        //   <li class="page-item"><a class="page-link" href="#">11</a></li>
+        //   <li class="page-item active"><a class="page-link" href="#">12</a></li>
+        //   <li class="page-item"><a class="page-link" href="#">13</a></li>
+        //   <li class="page-item"><a class="page-link" href="#">14</a></li>
+        //   <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+
+        $paginacionFinal = '';
+
+        if($page != 1){
+            $anterior = $resta1;
+            $paginacionFinal .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $anterior . '">Anterior</a></li>';
+        }
+        $paginacionFinal .= $listasIntermedias;
+        
+        if($page != $cantiPaginas){
+            $siguiente = $suma1;
+            $paginacionFinal .= '<li class="page-item"><a class="page-link" href="' . $_SERVER['PHP_SELF'] . '?page=' . $siguiente . '">Siguiente</a></li>';
+        }
+
+        $limite = 'LIMIT ' . ($page - 1) * $porPagina . ', ' . $porPagina;
+
+        $query = f_query("SELECT * FROM posts WHERE post_status = 'publicado' ORDER BY post_id DESC {$limite}");
         f_confirmar($query);
         while($fila = f_fetch_array($query)){
             $posts = <<<DELIMITADOR
@@ -391,6 +460,14 @@ DELIMITADOR;
 DELIMITADOR;
             echo $posts;
         }
+
+        $paginacion = <<<DELIMITADOR
+
+            <ul class="pagination justify-content-center mb-4">
+                {$paginacionFinal}
+            </ul>
+DELIMITADOR;
+        echo $paginacion;
     }
 
     // ⚡⚡ BACK
