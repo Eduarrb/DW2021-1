@@ -49,9 +49,40 @@
                         line-height: 2.8rem;
                     }
                 }
+                // &__panel:nth-child(even){
+                //     background-color: peru;
+                // }
+            }
+            &__item:nth-child(odd){
+                // background-color: peru;
+                .about__contenedor__timeline__item__panel{
+                    // background-color: peru;
+                    text-align: right;
+                    margin-left: 10%;
+                }
+            }
+            &__item:nth-child(even){
+                .about__contenedor__timeline__item__panel{
+                    text-align: left;
+                    margin-right: 10%;
+                    margin-left: auto;
+                }
             }
             .lastItem{
                 height: 16.2rem;
+                div{
+                    background-color: #fed136;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    p{
+                        color: white;
+                        font-size: 1.8rem;
+                        font-family: $font-mont;
+                        font-weight: 700;
+                        text-align: center;
+                    }
+                }
             }
         }
     }

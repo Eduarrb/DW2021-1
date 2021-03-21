@@ -463,7 +463,25 @@ ul {
         font-size: 1.6rem;
         color: #6c757d;
         line-height: 2.8rem; }
+  .about__contenedor__timeline__item:nth-child(odd) .about__contenedor__timeline__item__panel {
+    text-align: right;
+    margin-left: 10%; }
+  .about__contenedor__timeline__item:nth-child(even) .about__contenedor__timeline__item__panel {
+    text-align: left;
+    margin-right: 10%;
+    margin-left: auto; }
   .about__contenedor__timeline .lastItem {
     height: 16.2rem; }
+    .about__contenedor__timeline .lastItem div {
+      background-color: #fed136;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      .about__contenedor__timeline .lastItem div p {
+        color: white;
+        font-size: 1.8rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        text-align: center; }
 
 /*# sourceMappingURL=estilos.css.map */
