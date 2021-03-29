@@ -1,0 +1,58 @@
+.equipo{
+    background-color: #f8f9fa;
+    &__contenedor{
+        &__equipoBox{
+            display: flex;
+            justify-content: space-between;
+            &__item{
+                width: calc(100% / 3 - 2rem);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                &__imgBox{
+                    width: 22.5rem;
+                    height: 22.5rem;
+                    border-radius: 50%;
+                    border: 6px solid rgba(black, .1);
+                    overflow: hidden;
+                    img{
+                        display: block;
+                        width: 100%;
+                        // border-radius: 50%;
+                    }
+                }
+                &__dataBox{
+                    text-align: center;
+                }
+                &__iconsBox{
+                    a{
+                        display: inline-block;
+                        &:not(:last-child){
+                            margin-right: 1.5rem;
+                        }
+                        i{
+                            font-size: 2rem;
+                            width: 5rem;
+                            height: 5rem;
+                            background-color: black;
+                            color: white;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+            }
+        }
+        &__descripcion{
+            width: 65%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            color: #6c757d;
+            font-size: 1.6rem;
+            line-height: 2.8rem;
+        }
+    }
+}

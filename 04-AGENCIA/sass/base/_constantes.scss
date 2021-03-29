@@ -53,10 +53,15 @@ $font-roboto: 'Roboto Slab', serif;
     font-weight: 700;
     display: inline-block;
     text-transform: uppercase;
+    border: none;
+    cursor: pointer;
 }
 .btn-amarillo{
     background-color: #fed136;
     color: #fff;
+    &:hover{
+        background-color: #fec810;
+    }
 }
 .mt-1{
     margin-top: 1rem;
@@ -297,4 +302,7 @@ $font-roboto: 'Roboto Slab', serif;
 }
 .pr-10{
     padding-right: 10rem;
+}
+.height-100{
+    height: 100%;
 }

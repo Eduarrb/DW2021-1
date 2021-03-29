@@ -303,31 +303,32 @@ DELIMITADOR;
         // return true;
     }
 
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
+    // use PHPMailer\PHPMailer\PHPMailer;
+    // use PHPMailer\PHPMailer\SMTP;
+    // use PHPMailer\PHPMailer\Exception;
 
     // require '../vendor/autoload.php';
 
     function f_send_email($email, $asunto, $msj, $headers=null){
-        $mail = new PHPMailer();
-        $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
-        $mail->SMTPAuth = true;
-        $mail->Username = '5c040c9f941e53';
-        $mail->Password = '939e9aa1c7e00f';
-        $mail->Port = 2525;
-        $mail->SMTPSecure = 'tls';
-        $mail->isHTML(true);
-        $mail->CharSet = 'UTF-8';
+        return mail($email, $asunto, $msj, $headers);
+        // $mail = new PHPMailer();
+        // $mail->isSMTP();
+        // $mail->Host = 'smtp.mailtrap.io';
+        // $mail->SMTPAuth = true;
+        // $mail->Username = '5c040c9f941e53';
+        // $mail->Password = '939e9aa1c7e00f';
+        // $mail->Port = 2525;
+        // $mail->SMTPSecure = 'tls';
+        // $mail->isHTML(true);
+        // $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom('registro@blogeduardo.com', 'admin');
-        $mail->addAddress($email);
-        $mail->Subject = $asunto;
-        $mail->Body = $msj;
-        if($mail->send()){
-            $emailSent = true;
-        }
+        // $mail->setFrom('registro@blogeduardo.com', 'admin');
+        // $mail->addAddress($email);
+        // $mail->Subject = $asunto;
+        // $mail->Body = $msj;
+        // if($mail->send()){
+        //     $emailSent = true;
+        // }
     }
 
     function f_show_comentarios_front($post_id){

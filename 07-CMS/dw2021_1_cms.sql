@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-03-2021 a las 17:02:14
+-- Tiempo de generación: 22-03-2021 a las 18:36:10
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 8.0.2
 
@@ -67,9 +67,17 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`com_id`, `com_post_id`, `com_nombre`, `com_email`, `com_mensaje`, `com_fecha`, `com_status`) VALUES
-(1, 1, 'Pepito', 'pepito@gmail.com', 'Este es el comentario de pepito', '2021-03-16 16:34:37', 'aprobado'),
-(2, 1, 'Jaimito', 'jaimito@gmail.com', 'Este es el comentario de jaimito', '2021-03-16 16:35:51', 'aprobado'),
-(3, 1, 'Maria', 'maria@gmail.com', 'este es el comentario de maría', '2021-03-16 16:40:36', 'aprobado');
+(1, 1, 'Pepito', 'pepito@gmail.com', 'Este es el comentario de pepito', '2021-01-16 16:34:37', 'aprobado'),
+(2, 1, 'Jaimito', 'jaimito@gmail.com', 'Este es el comentario de jaimito', '2021-01-16 16:35:51', 'aprobado'),
+(3, 1, 'Maria', 'maria@gmail.com', 'este es el comentario de maría', '2021-01-16 16:40:36', 'aprobado'),
+(4, 1, 'carlos', 'carlos@gmail.com', 'comentario de carlos', '2021-02-17 15:06:02', 'aprobado'),
+(5, 1, 'Rodrigo', 'rodrigo@gmail.com', 'este es el comentario de rodrigo', '2021-02-17 15:06:36', 'aprobado'),
+(6, 1, 'Sofia', 'sofia@gmail.com', 'este es el comentario de sofia', '2021-03-17 15:06:57', 'aprobado'),
+(7, 1, 'Mauricio', 'mauricio@gmail.com', 'este es el comentario de mauricio', '2021-03-17 15:07:13', 'aprobado'),
+(8, 1, 'Jose', 'jose@gmail.com', 'este es el comentario de jose', '2021-03-17 15:07:38', 'aprobado'),
+(9, 1, 'Carla', 'carla@gmail.com', 'este es el comentario de carla', '2021-03-17 15:07:58', 'aprobado'),
+(10, 1, 'Jessica', 'jessica@gmail.com', 'este es el comentario de jessica', '2021-03-17 15:08:13', 'aprobado'),
+(11, 1, 'Roberto', 'roberto@gmail.com', 'este es el comentario de roberto', '2020-03-17 15:29:15', 'aprobado');
 
 -- --------------------------------------------------------
 
@@ -96,8 +104,11 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`post_id`, `post_cat_id`, `post_titulo`, `post_autor`, `post_fecha`, `post_img`, `post_contenido`, `post_tags`, `post_vistas`, `post_status`) VALUES
-(1, 1, 'Curso de PHP', 'Jaimito', '2021-01-01', '01.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, maxime sint eveniet quibusdam quod distinctio illo officiis reprehenderit fugiat dolore!', 'curso, php, 2021', 11, 'publicado'),
-(2, 2, 'Curso de JavaScript', 'Ken', '2021-03-16', '02.png', 'Este es el contenido del curso', 'Javascript, curso', 0, 'publicado');
+(1, 1, 'Curso de PHP', 'Jaimito', '2021-01-01', '01.png', 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, maxime sint eveniet quibusdam quod distinctio illo officiis reprehenderit fugiat dolore!', 'curso, php, 2021', 32, 'publicado'),
+(2, 2, 'Curso de JavaScript', 'Ken', '2021-03-16', '02.png', 'Este es el contenido del curso', 'Javascript, curso', 0, 'publicado'),
+(3, 3, 'Curso de HTML5', 'Eduardo', '2021-03-18', '03.png', 'Este es el contenido del curso de HTML5', 'html5, curso', 0, 'publicado'),
+(4, 1, 'Curso de MYSQL', 'Susan', '2021-03-18', '04.png', 'este es el contenido del curso de mysql', 'mysql', 0, 'publicado'),
+(5, 1, 'Curso PHP Orientado a Obejtos', 'Ken', '2021-03-19', '05.png', 'Este es el contenido del curso', 'php', 0, 'publicado');
 
 -- --------------------------------------------------------
 
@@ -168,13 +179,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `com_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `com_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `post_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
