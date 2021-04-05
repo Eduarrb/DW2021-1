@@ -4,11 +4,20 @@
         &__equipoBox{
             display: flex;
             justify-content: space-between;
+            @media only screen and (max-width: $bp-large){
+                flex-direction: column;
+                align-items: center;
+            }
             &__item{
                 width: calc(100% / 3 - 2rem);
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                @media only screen and (max-width: $bp-large){
+                    &:not(:last-child){
+                        margin-bottom: 5rem;
+                    }
+                }
                 &__imgBox{
                     width: 22.5rem;
                     height: 22.5rem;

@@ -1,9 +1,20 @@
+/* BREAKPOINTS */
+
+// 992PX / 16 = 62 
+// 768PX / 16 = 48
+// 576PX / 16 = 36
+
+$bp-large: 62em;
+$bp-medium: 48em;
+$bp-small: 36em;
+
 *,
 *::after,
 *::before{
     // IMG, ICONO, TEXT, COLO
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 html{

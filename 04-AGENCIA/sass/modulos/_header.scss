@@ -5,6 +5,8 @@
         padding: 3rem 0;
         position: fixed;
         width: 100%;
+        z-index: 1;
+        transition: all .3s;
         &__contenedor{
             display: flex;
             justify-content: space-between;
@@ -13,9 +15,13 @@
                 font-family: $font-kaushan;
                 font-size: 2.8rem;
                 color: #fec503;
+                transition: all .3s;
             }
             &__menu{
                 display: flex;
+                @media only screen and (max-width: $bp-large){
+                    display: none;
+                }
                 &__item{
                     // background-color: blue;
                    &--link{
@@ -28,6 +34,32 @@
                        display: inline-block;
                    } 
                 }
+            }
+            &--btn{
+                display: none;
+                background-color: #fec503;
+                font-size: 1.2rem;
+                color: white;
+                font-family: $font-mont;
+                padding: 1rem;
+                border-radius: .3rem;
+                text-transform: uppercase;
+                cursor: pointer;
+                i{
+                    margin-left: .5rem;
+                }
+                @media only screen and (max-width: $bp-large){
+                    display: block;
+                }
+            }
+        }
+        &.active{
+            background-color: #212529;
+            padding: 1rem 0;
+            transition: all .3s;
+            & .header__nav__contenedor--logo{
+                font-size: 2rem;
+                transition: all .3s;
             }
         }
     }
@@ -42,6 +74,7 @@
             justify-content: center;
             align-items: center;
             height: 100%;
+            text-align: center;
             &--subtitulo{
                 font-family: $font-merri;
                 font-size: 3.5rem;

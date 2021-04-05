@@ -10,6 +10,13 @@ $font-roboto: 'Roboto Slab', serif;
     max-width: 120rem;
     margin-left: auto;
     margin-right: auto;
+    @media only screen and (max-width: $bp-large){
+        max-width: 72rem;
+        // width: 80%;
+    }
+    @media only screen and (max-width: $bp-medium){
+        max-width: 54rem;
+    }
 }
 .titulo-n3{
     font-family: $font-mont;

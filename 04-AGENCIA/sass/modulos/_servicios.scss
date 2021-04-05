@@ -3,11 +3,18 @@
         &__box{
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
             &__item{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 width: calc(100% / 3 - 2rem);
+                @media only screen and (max-width: $bp-medium){
+                    width: 100%;
+                    &:not(:last-child){
+                        margin-bottom: 3rem;
+                    }
+                }
                 &__iconBox{
                     width: 12.8rem;
                     height: 12.8rem;

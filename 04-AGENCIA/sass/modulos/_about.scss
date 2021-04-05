@@ -29,6 +29,10 @@
                     height: 15rem;
                     border-radius: 50%;
                     border: 6px solid #e9ecef;
+                    @media only screen and (max-width: $bp-large){
+                        width: 10rem;
+                        height: 10rem;
+                    }
                     img{
                         width: 100%;
                         border-radius: 50%;
@@ -69,7 +73,10 @@
                 }
             }
             .lastItem{
-                height: 16.2rem;
+                height: 15rem;
+                @media only screen and (max-width: $bp-large){
+                    height: 10rem;
+                }
                 div{
                     background-color: #fed136;
                     display: flex;
@@ -81,6 +88,10 @@
                         font-family: $font-mont;
                         font-weight: 700;
                         text-align: center;
+                        @media only screen and (max-width: $bp-large){
+                            font-size: 1.3rem;
+                            padding: 0 .6rem;
+                        }
                     }
                 }
             }
