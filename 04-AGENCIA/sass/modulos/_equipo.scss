@@ -18,6 +18,9 @@
                         margin-bottom: 5rem;
                     }
                 }
+                @media only screen and (max-width: $bp-medium){
+                    width: 100%;
+                }
                 &__imgBox{
                     width: 22.5rem;
                     height: 22.5rem;
@@ -49,6 +52,10 @@
                             justify-content: center;
                             align-items: center;
                             border-radius: 50%;
+                            @media only screen and (max-width: $bp-medium){
+                                width: 4rem;
+                                height: 4rem;
+                            }
                         }
                     }
                 }

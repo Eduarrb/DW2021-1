@@ -27,6 +27,9 @@ ul {
   @media only screen and (max-width: 48em) {
     .contenedor {
       max-width: 54rem; } }
+  @media only screen and (max-width: 36em) {
+    .contenedor {
+      padding: 0 2rem; } }
 
 .titulo-n3 {
   font-family: "Montserrat", sans-serif;
@@ -390,11 +393,20 @@ ul {
         font-size: 3.5rem;
         color: white;
         font-style: italic; }
+        @media only screen and (max-width: 48em) {
+          .header__bienvenida__contenedor--subtitulo {
+            font-size: 2rem; } }
       .header__bienvenida__contenedor--titulo {
         font-family: "Montserrat", sans-serif;
         font-size: 7.5rem;
         color: #fff;
         text-transform: uppercase; }
+        @media only screen and (max-width: 48em) {
+          .header__bienvenida__contenedor--titulo {
+            font-size: 6rem; } }
+        @media only screen and (max-width: 48em) {
+          .header__bienvenida__contenedor--titulo {
+            font-size: 4rem; } }
 
 .servicios__contenedor__box {
   display: flex;
@@ -441,6 +453,9 @@ ul {
       @media only screen and (max-width: 62em) {
         .portafolio__contenedor__box__item {
           width: calc(50% - 1.5rem); } }
+      @media only screen and (max-width: 36em) {
+        .portafolio__contenedor__box__item {
+          width: 100%; } }
       .portafolio__contenedor__box__item__imgBox {
         position: relative;
         display: block; }
@@ -487,6 +502,9 @@ ul {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%); }
+  @media only screen and (max-width: 48em) {
+    .about__contenedor__timeline::before {
+      left: 4rem; } }
 .about__contenedor__timeline {
   position: relative; }
   .about__contenedor__timeline__item {
@@ -505,6 +523,11 @@ ul {
         .about__contenedor__timeline__item__imgBox {
           width: 10rem;
           height: 10rem; } }
+      @media only screen and (max-width: 48em) {
+        .about__contenedor__timeline__item__imgBox {
+          width: 8rem;
+          height: 8rem;
+          left: 4rem; } }
       .about__contenedor__timeline__item__imgBox img {
         width: 100%;
         border-radius: 50%; }
@@ -520,18 +543,32 @@ ul {
         font-size: 1.6rem;
         color: #6c757d;
         line-height: 2.8rem; }
+      @media only screen and (max-width: 48em) {
+        .about__contenedor__timeline__item__panel {
+          width: auto; } }
   .about__contenedor__timeline__item:nth-child(odd) .about__contenedor__timeline__item__panel {
     text-align: right;
     margin-left: 10%; }
+    @media only screen and (max-width: 48em) {
+      .about__contenedor__timeline__item:nth-child(odd) .about__contenedor__timeline__item__panel {
+        text-align: left;
+        margin-left: 10rem; } }
   .about__contenedor__timeline__item:nth-child(even) .about__contenedor__timeline__item__panel {
     text-align: left;
     margin-right: 10%;
     margin-left: auto; }
+    @media only screen and (max-width: 48em) {
+      .about__contenedor__timeline__item:nth-child(even) .about__contenedor__timeline__item__panel {
+        margin-left: 10rem;
+        margin-right: 0; } }
   .about__contenedor__timeline .lastItem {
     height: 15rem; }
     @media only screen and (max-width: 62em) {
       .about__contenedor__timeline .lastItem {
         height: 10rem; } }
+    @media only screen and (max-width: 48em) {
+      .about__contenedor__timeline .lastItem {
+        height: 8rem; } }
     .about__contenedor__timeline .lastItem div {
       background-color: #fed136;
       display: flex;
@@ -547,6 +584,9 @@ ul {
           .about__contenedor__timeline .lastItem div p {
             font-size: 1.3rem;
             padding: 0 .6rem; } }
+        @media only screen and (max-width: 48em) {
+          .about__contenedor__timeline .lastItem div p {
+            font-size: 1rem; } }
 
 .equipo {
   background-color: #f8f9fa; }
@@ -565,6 +605,9 @@ ul {
       @media only screen and (max-width: 62em) {
         .equipo__contenedor__equipoBox__item:not(:last-child) {
           margin-bottom: 5rem; } }
+      @media only screen and (max-width: 48em) {
+        .equipo__contenedor__equipoBox__item {
+          width: 100%; } }
       .equipo__contenedor__equipoBox__item__imgBox {
         width: 22.5rem;
         height: 22.5rem;
@@ -590,6 +633,10 @@ ul {
           justify-content: center;
           align-items: center;
           border-radius: 50%; }
+          @media only screen and (max-width: 48em) {
+            .equipo__contenedor__equipoBox__item__iconsBox a i {
+              width: 4rem;
+              height: 4rem; } }
   .equipo__contenedor__descripcion {
     width: 65%;
     margin-left: auto;
@@ -604,6 +651,22 @@ ul {
   .auspiciadores__contenedor {
     display: flex;
     justify-content: space-between; }
+    @media only screen and (max-width: 48em) {
+      .auspiciadores__contenedor {
+        flex-wrap: wrap; } }
+    @media only screen and (max-width: 36em) {
+      .auspiciadores__contenedor {
+        flex-direction: column;
+        align-items: center; } }
+    .auspiciadores__contenedor img {
+      display: block; }
+      @media only screen and (max-width: 62em) {
+        .auspiciadores__contenedor img {
+          width: 18rem; } }
+      @media only screen and (max-width: 48em) {
+        .auspiciadores__contenedor img {
+          width: 20rem;
+          margin-bottom: 3rem; } }
 
 .contacto {
   background-color: #212529;
@@ -616,6 +679,11 @@ ul {
     flex-wrap: wrap; }
     .contacto__contenedor__form__col {
       width: calc(50% - 1.5rem); }
+      @media only screen and (max-width: 48em) {
+        .contacto__contenedor__form__col {
+          width: 100%; }
+          .contacto__contenedor__form__col:not(:last-child) {
+            margin-bottom: 2rem; } }
       .contacto__contenedor__form__col__formGroup:not(:last-child) {
         margin-bottom: 2rem; }
       .contacto__contenedor__form__col__formGroup input,

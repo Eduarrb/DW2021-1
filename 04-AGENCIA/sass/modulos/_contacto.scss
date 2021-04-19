@@ -10,6 +10,12 @@
             flex-wrap: wrap;
             &__col{
                 width: calc(50% - 1.5rem);
+                @media only screen and (max-width: $bp-medium){
+                    width: 100%;
+                    &:not(:last-child){
+                        margin-bottom: 2rem;
+                    }
+                }
                 &__formGroup{
                     &:not(:last-child){
                         margin-bottom: 2rem;

@@ -17,6 +17,9 @@ $font-roboto: 'Roboto Slab', serif;
     @media only screen and (max-width: $bp-medium){
         max-width: 54rem;
     }
+    @media only screen and (max-width: $bp-small){
+        padding: 0 2rem;
+    }
 }
 .titulo-n3{
     font-family: $font-mont;
